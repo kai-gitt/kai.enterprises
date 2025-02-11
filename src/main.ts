@@ -7,7 +7,8 @@ let clock: HTMLParagraphElement;
 let wakatime: HTMLParagraphElement;
 let lastfm: {
 	cover: HTMLImageElement;
-	title: HTMLParagraphElement;
+	cover_blur: HTMLImageElement;
+	title: HTMLAnchorElement;
 	subtitle: HTMLParagraphElement;
 };
 
@@ -17,7 +18,10 @@ document.addEventListener("DOMContentLoaded", async (_) => {
 	wakatime = document.getElementById("wakatime")! as HTMLParagraphElement;
 	lastfm = {
 		cover: document.getElementById("lastfm_cover")! as HTMLImageElement,
-		title: document.getElementById("lastfm_title")! as HTMLParagraphElement,
+		cover_blur: document.getElementById(
+			"lastfm_cover_blur"
+		)! as HTMLImageElement,
+		title: document.getElementById("lastfm_title")! as HTMLAnchorElement,
 		subtitle: document.getElementById(
 			"lastfm_subtitle"
 		)! as HTMLParagraphElement,
@@ -52,6 +56,7 @@ const UpdateLastFMData = async (): Promise<void> => {
 
 	if (data.image[3]["#text"] != "") {
 		lastfm.cover.src = data.image[3]["#text"];
+		lastfm.cover_blur.src = data.image[3]["#text"];
 		lastfm.cover.alt = `cover art of ${data.name}`;
 		lastfm.cover.classList.remove("invert");
 		lastfm.cover.classList.remove("opacity-*");
@@ -61,5 +66,6 @@ const UpdateLastFMData = async (): Promise<void> => {
 	}
 
 	lastfm.title.innerText = data.name;
+	lastfm.title.href = data.url;
 	lastfm.subtitle.innerText = `${data.album["#text"]} • ${data.artist["#text"]}`;
 };

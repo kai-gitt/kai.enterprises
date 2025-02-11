@@ -10,15 +10,21 @@
 		class="flex flex-col justify-center items-center bg-[#050505] m-0 p-0 w-screen h-screen">
 		<div class="gap-8 grid grid-cols-4 auto-rows-[14em] w-3/4">
 			<div
-				class="row-span-3 bg-neutral-900/10 p-4 rounded-2xl outline-2 outline-neutral-100/5">
+				class="row-span-1 bg-neutral-900/10 p-4 rounded-2xl outline-2 outline-neutral-100/5 max-h-[8em]">
 				<p class="font-sans text-neutral-300/30 text-sm">
 					<img
 						src="icons/list.svg"
 						class="inline opacity-40 invert w-4 h-4 pb-0.5" />
-					projects.go
+					status.go
+				</p>
+				<p class="font-normal text-neutral-300/90 text-2xl pt-4">
+					I'm currently
+					<span
+						class="font-semibold text-emerald-500 text-glow-emerald-500"
+						>online</span
+					>.
 				</p>
 			</div>
-
 			<div
 				class="col-span-2 bg-neutral-900/10 p-4 rounded-2xl outline-2 outline-neutral-100/5">
 				<p class="font-sans text-neutral-300/30 text-sm">
@@ -28,24 +34,26 @@
 					last_fm.go
 				</p>
 				<div class="pt-6 flex flex-row">
-					<!-- https://lastfm.freetls.fastly.net/i/u/174s/163ee1ae7c6b962fb0c697d4fc087656.jpg -->
-					<img
-						src="icons/music.svg"
-						alt="album cover"
-						class="rounded-xl w-32 h-auto bg-neutral-900/5 p-8 invert opacity-30"
-						id="lastfm_cover" />
+					<div class="relative rounded-xl w-32 h-32 bg-neutral-900/5">
+						<img
+							src="icons/music.svg"
+							alt="album cover glow"
+							class="absolute inset-0 w-full h-full blur-md"
+							id="lastfm_cover_blur" />
+						<img
+							src="icons/music.svg"
+							alt="album cover"
+							class="relative z-10 w-full h-full rounded-xl invert opacity-30"
+							id="lastfm_cover" />
+					</div>
+
 					<div class="pl-8 pt-6">
 						<p
-							class="font-semibold text-neutral-300/90 text-2xl hover:underline">
-							<a
-								href="https://www.last.fm/music/Clovis+Reyes/_/Fluxxwave+-+Slowed+%252B+Reverb"
-								id="lastfm_title">
-								————————————
-							</a>
-							</a>
+							class="font-semibold text-neutral-300/90 text-3xl hover:underline">
+							<a href="#" id="lastfm_title"> ———————————— </a>
 						</p>
 						<p
-							class="font-normal text-neutral-300/70"
+							class="font-normal text-xl text-neutral-300/70"
 							id="lastfm_subtitle">
 							——————
 						</p>
@@ -62,9 +70,17 @@
 					languages.go
 				</p>
 			</div>
-
-	<div class="col-span-2 bg-neutral-900/10 p-4 rounded-2xl outline-2 outline-neutral-100/5 min-h-[19em]">
-
+			<div
+				class="row-span-2 bg-neutral-900/10 p-4 rounded-2xl outline-2 outline-neutral-100/5 min-h-[8em] mt-[-6em]">
+				<p class="font-sans text-neutral-300/30 text-sm">
+					<img
+						src="icons/adjustments.svg"
+						class="inline opacity-40 invert w-4 h-4 pb-0.5" />
+					projects.go
+				</p>
+			</div>
+			<div
+				class="col-span-2 bg-neutral-900/10 p-4 rounded-2xl outline-2 outline-neutral-100/5 min-h-[19em]">
 				<p class="font-sans text-neutral-300/30 text-sm">
 					<img
 						src="icons/user.svg"
@@ -120,6 +136,7 @@
 					</div>
 				</div>
 			</div>
+
 			<div
 				class="row-span-1 bg-neutral-900/10 p-4 rounded-2xl outline-2 outline-neutral-100/5">
 				<p class="font-sans text-neutral-300/30 text-sm">
