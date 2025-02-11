@@ -23,7 +23,13 @@ const UpdateClock = () => {
 	let time = new Date(Date.now());
 	clock.innerText = `${((time.getUTCHours() + TZ_OFFSET) % 24)
 		.toString(10)
-		.padStart(2, "0")}:${time.getUTCMinutes()}:${time.getUTCSeconds()}`;
+		.padStart(2, "0")}:${time
+		.getUTCMinutes()
+		.toString(10)
+		.padStart(2, "0")}:${time
+		.getUTCSeconds()
+		.toString(10)
+		.padStart(2, "0")}`;
 };
 
 const UpdateWakatimeData = async (): Promise<void> => {

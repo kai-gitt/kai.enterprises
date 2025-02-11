@@ -15,7 +15,7 @@ export async function fetchWakaTimeData(
 	apiKey: string,
 	cache: KVNamespace
 ): Promise<CumulativeTotal | null> {
-	if (!(await shouldRefetch(cache))) {
+	if (!(await shouldRefetch(KEYS.WAKA_LAST_UPDATED, CACHE_TIMEOUT, cache))) {
 		const data = await cache.get(KEYS.WAKA);
 		if (data != null) {
 			try {
@@ -48,10 +48,14 @@ export async function fetchWakaTimeData(
 	}
 }
 
-export async function shouldRefetch(cache: KVNamespace): Promise<boolean> {
-	const data = await cache.get(KEYS.WAKA_LAST_UPDATED);
+export async function shouldRefetch(
+	key: string,
+	timeout: number,
+	cache: KVNamespace
+): Promise<boolean> {
+	const data = await cache.get(key);
 	if (data == null) return true;
 	const date = parseInt(data);
-	if (Date.now() < date + CACHE_TIMEOUT) return false;
+	if (Date.now() < date + timeout) return false;
 	return true;
 }
