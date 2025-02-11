@@ -18,18 +18,18 @@ export default {
 					env.cache
 				);
 				const response = new Response(JSON.stringify(data));
-				response.headers.append("Content-Type", "application/json");
-				response.headers.append("Access-Control-Allow-Origin", "*");
-				response.headers.append(
+				response.headers.set("Content-Type", "application/json");
+				response.headers.set("Access-Control-Allow-Origin", "*");
+				response.headers.set(
 					"Access-Control-Allow-Methods",
 					"GET,HEAD,OPTIONS"
 				);
-				response.headers.append("Access-Control-Max-Age", "86400");
+				response.headers.set("Access-Control-Max-Age", "86400");
 				return response;
 		}
 
 		const response = new Response();
-		response.headers.append("Location", "https://kai.enterprises/");
+		response.headers.set("Location", "https://kai.enterprises/");
 		return response;
 	},
 } satisfies ExportedHandler<Env>;
