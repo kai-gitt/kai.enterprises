@@ -97,6 +97,43 @@
 							class="inline opacity-40 invert w-4 h-4 pb-0.5" />
 						about_me.go
 					</p>
+					<div class="flex flex-row items-center">
+						<img
+							src="pfp.png"
+							alt="a white cat labeled milk in a cup'"
+							class="w-[8em] mt-6 rounded-full" />
+						<div>
+							<!-- now look, copying the same div 3 times feels stupid (that's because it is) -->
+							<!-- but i had no better idea on how to put text over and below text without some css fuckery -->
+							<p
+								class="text-2xl text-white pl-6 opacity-40 font-semibold">
+								<span class="text-transparent select-none"
+									>Hello there! iiiiiiiiiiiiii</span
+								>
+								<span
+									class="text-pink-400 text-xl font-mono font-bold text-glow-3xl shadow-pink-500"
+									>かい</span
+								>
+							</p>
+							<p class="text-3xl text-white pl-6 font-semibold">
+								Hello there! I&apos;m
+								<span
+									class="text-pink-500 font-mono font-bold text-glow-3xl shadow-pink-500"
+									>Kai</span
+								>
+							</p>
+							<p
+								class="text-2xl text-white pl-6 opacity-50 font-semibold">
+								<span class="text-transparent w-128 select-none"
+									>Hello there! Iiiiiiiiiii
+								</span>
+								<span
+									class="text-pink-400 text-xl font-mono font-bold text-glow-3xl shadow-pink-500"
+									>/'kɑi̯/
+								</span>
+							</p>
+						</div>
+					</div>
 				</div>
 
 				<div class="col-span-2 pt-20">
@@ -168,8 +205,18 @@
 						<img
 							src="icons/adjustments.svg"
 							class="inline opacity-40 invert w-4 h-4 pb-0.5" />
-						settings.toml
+						user.toml
 					</p>
+					<div class="pt-2 text-white/50">
+						<pre>
+[user]
+<span class="text-pink-300 shadow-pink-300 text-glow-2xl">username</span> = <span class="text-emerald-300  shadow-emerald-300 text-glow-2xl">"kai"</span>
+<span class="text-pink-300 shadow-pink-300 text-glow-2xl">pronouns</span> = <span class="text-emerald-300 shadow-emerald-300 text-glow-2xl">[ "she/her" ]</span>
+
+[contact]
+<span class="text-pink-300 shadow-pink-300 text-glow-2xl">email</span> = <span class="text-emerald-300 shadow-emerald-300 text-glow-2xl">"me@kai.enterprises"</span>					
+					</pre>
+					</div>
 				</div>
 			</div>
 		</main>
