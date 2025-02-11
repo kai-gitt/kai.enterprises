@@ -60,6 +60,8 @@ document.addEventListener("DOMContentLoaded", async (_) => {
 			UpdateOnlineStatus(),
 		]);
 	}
+
+	document.getElementById("loading_reminder")!.remove();
 });
 
 const UpdateClock = () => {

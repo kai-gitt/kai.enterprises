@@ -9,6 +9,9 @@
 	<body
 		class="overflow-hidden absolute inset-0 h-full w-full bg-[#050505] bg-[radial-gradient(#e5e7eb05_1px,transparent_1px)] [background-size:16px_16px]">
 		<div class="trans content-none w-screen h-[1px]"></div>
+		<span class="absolute text-white/60 font-mono p-8" id="loading_reminder"
+			>&NestedGreaterGreater; fetching data may take a while</span
+		>
 		<main
 			class="flex flex-col justify-center items-center m-0 p-0 w-screen h-screen z-1">
 			<div class="gap-8 grid grid-cols-4 auto-rows-[14em] w-3/4">
@@ -73,10 +76,27 @@
 					<p
 						class="font-mono select-none text-neutral-300/30 text-sm">
 						<img
-							src="icons/code.svg"
+							src="icons/adjustments.svg"
 							class="inline opacity-40 invert w-4 h-4 pb-0.5" />
-						languages.go
+						user.toml
 					</p>
+					<div class="pt-2 text-white/50">
+						<pre>[user]
+<span class="text-pink-300 shadow-pink-300 text-glow-2xl">username</span> = <span class="text-emerald-300  shadow-emerald-300 text-glow-2xl">"kai"</span>
+<span class="text-pink-300 shadow-pink-300 text-glow-2xl">pronouns</span> = <span class="text-emerald-300 shadow-emerald-300 text-glow-2xl">[ "she/her" ]</span>
+
+[contact]
+<span class="text-pink-300 shadow-pink-300 text-glow-2xl">email</span> = <a href="mailto:me@kai.enterprises" class="text-emerald-300 shadow-emerald-300 text-glow-2xl hover:underline">"me@kai.enterprises"</a>	
+
+[socials]
+<span class="text-pink-300 shadow-pink-300 text-glow-2xl">github</span> = <a href="https://github.com/kai-gitt" class="text-emerald-300 shadow-emerald-300 text-glow-2xl hover:underline">"kai-gitt"</a>	
+<span class="text-pink-300 shadow-pink-300 text-glow-2xl">mastodon</span> = <a href="https://blahaj.social/@kai" class="text-emerald-300 shadow-emerald-300 text-glow-2xl hover:underline">"@kai@blahaj.social"</a>
+
+[orgs.cloudnode]
+<span class="text-pink-300 shadow-pink-300 text-glow-2xl">github</span> = <a href="https://github.com/cloudnode-pro" class="text-emerald-300 shadow-emerald-300 text-glow-2xl hover:underline">"cloudnode-pro"</a>	
+<span class="text-pink-300 shadow-pink-300 text-glow-2xl">mastodon</span> = <a href="https://mastodon.social/@cloudnode" class="text-emerald-300 shadow-emerald-300 text-glow-2xl hover:underline">"@cloudnode"</a>
+<span class="text-pink-300 shadow-pink-300 text-glow-2xl">matrix</span> = <a href="https://matrix.to/#/!jqfTQiJXxKYvIDxcFG:matrix.org?via=matrix.org" class="text-emerald-300 shadow-emerald-300 text-glow-2xl hover:underline">"[object URL]"</a></pre>
+					</div>
 				</div>
 				<div
 					class="row-span-2 transition-colors hover:bg-neutral-950 bg-neutral-950/10 p-4 rounded-2xl outline-2 outline-neutral-100/5 min-h-[8em] mt-[-6em]">
@@ -203,19 +223,19 @@
 					<p
 						class="font-mono select-none text-neutral-300/30 text-sm">
 						<img
-							src="icons/adjustments.svg"
+							src="icons/code.svg"
 							class="inline opacity-40 invert w-4 h-4 pb-0.5" />
-						user.toml
+						languages.yaml
 					</p>
 					<div class="pt-2 text-white/50">
 						<pre>
-[user]
-<span class="text-pink-300 shadow-pink-300 text-glow-2xl">username</span> = <span class="text-emerald-300  shadow-emerald-300 text-glow-2xl">"kai"</span>
-<span class="text-pink-300 shadow-pink-300 text-glow-2xl">pronouns</span> = <span class="text-emerald-300 shadow-emerald-300 text-glow-2xl">[ "she/her" ]</span>
-
-[contact]
-<span class="text-pink-300 shadow-pink-300 text-glow-2xl">email</span> = <span class="text-emerald-300 shadow-emerald-300 text-glow-2xl">"me@kai.enterprises"</span>					
-					</pre>
+programming:
+  - <span class="text-emerald-300  shadow-emerald-300 text-glow-1xl">"golang"</span>
+  - <span class="text-emerald-300  shadow-emerald-300 text-glow-1xl">"typescript"</span>
+  - <span class="text-emerald-300  shadow-emerald-300 text-glow-1xl">"java"</span>
+real:
+  - <span class="text-emerald-300  shadow-emerald-300 text-glow-1xl">"english"</span>
+  - <span class="text-emerald-300  shadow-emerald-300 text-glow-1xl">"polish"</span></pre>
 					</div>
 				</div>
 			</div>
