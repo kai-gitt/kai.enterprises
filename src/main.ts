@@ -269,15 +269,3 @@ function wmoToDescription(wmoCode: number): string {
 		weatherDescriptions[wmoCode].toLowerCase() || "a black hole is forming"
 	);
 }
-
-const te = new TextEncoder();
-let keyPair = await window.crypto.subtle.generateKey(
-	{
-		name: "RSA-OAEP",
-		modulusLength: 4096,
-		publicExponent: new Uint8Array([1, 0, 1]),
-		hash: "SHA-256",
-	},
-	true,
-	["encrypt", "decrypt"]
-);
