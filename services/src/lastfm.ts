@@ -28,8 +28,8 @@ export async function fetchLastfmData(
 	try {
 		const req = await fetch(url);
 		const data = (await req.json()) as LastFMResponse;
-		cache.put(KEYS.LFM_LAST_UPDATED, Date.now().toString());
-		cache.put(KEYS.LFM, JSON.stringify(data.recenttracks.track[0]));
+		await cache.put(KEYS.LFM_LAST_UPDATED, Date.now().toString());
+		await cache.put(KEYS.LFM, JSON.stringify(data.recenttracks.track[0]));
 		return data.recenttracks.track[0];
 	} catch (e) {
 		return null;

@@ -39,8 +39,8 @@ export async function fetchWakaTimeData(
 		}
 		const data = (await response.json()) as WakatimeResponse;
 		// update the cache
-		cache.put(KEYS.WAKA_LAST_UPDATED, Date.now().toString());
-		cache.put(KEYS.WAKA, JSON.stringify(data.cumulative_total));
+		await cache.put(KEYS.WAKA_LAST_UPDATED, Date.now().toString());
+		await cache.put(KEYS.WAKA, JSON.stringify(data.cumulative_total));
 		return data.cumulative_total;
 	} catch (error) {
 		console.error("[wakatime]", error);
