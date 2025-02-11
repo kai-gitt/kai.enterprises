@@ -67,3 +67,23 @@ export interface CurrentWeather {
 	is_day: number;
 	weathercode: number;
 }
+
+export interface DiscordResponse {
+	data: Data;
+	success: boolean;
+}
+
+interface Data {
+	discord_status: DiscordStatus;
+	active_on_discord_web: boolean;
+	active_on_discord_desktop: boolean;
+	active_on_discord_mobile: boolean;
+	listening_to_spotify: boolean;
+}
+
+export enum DiscordStatus {
+	online = "online",
+	idle = "idle",
+	dnd = "dnd",
+	offline = "offline",
+}

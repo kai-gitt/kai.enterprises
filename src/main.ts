@@ -1,5 +1,11 @@
 import "./main.css";
-import { CumulativeTotal, Track, WeatherData } from "./model";
+import {
+	CumulativeTotal,
+	DiscordResponse,
+	DiscordStatus,
+	Track,
+	WeatherData,
+} from "./model";
 
 const TZ_OFFSET = 1;
 const APPROX = [53.4, 14.5];
@@ -16,6 +22,7 @@ let weather: {
 	temp: HTMLParagraphElement;
 	condition: HTMLParagraphElement;
 };
+let online_status: HTMLParagraphElement;
 
 document.addEventListener("DOMContentLoaded", async (_) => {
 	// couldn't think of a better way :<
@@ -31,6 +38,9 @@ document.addEventListener("DOMContentLoaded", async (_) => {
 			"lastfm_subtitle"
 		)! as HTMLParagraphElement,
 	};
+	online_status = document.getElementById(
+		"online_status"
+	)! as HTMLParagraphElement;
 	weather = {
 		condition: document.getElementById(
 			"weather_condition"
@@ -41,6 +51,7 @@ document.addEventListener("DOMContentLoaded", async (_) => {
 	await UpdateWakatimeData();
 	await UpdateLastFMData();
 	await UpdateWeather();
+	await UpdateOnlineStatus();
 });
 
 const UpdateClock = () => {
@@ -80,6 +91,40 @@ const UpdateLastFMData = async (): Promise<void> => {
 	lastfm.title.innerText = data.name;
 	lastfm.title.href = data.url;
 	lastfm.subtitle.innerText = `${data.album["#text"]} • ${data.artist["#text"]}`;
+};
+
+const UpdateOnlineStatus = async (): Promise<void> => {
+	const req = await fetch("https://services.kai.enterprises/discord");
+	const data = (await req.json()) as DiscordResponse;
+
+	const types = {
+		[DiscordStatus.online]: {
+			status: "online",
+			color: "emerald-500",
+		},
+		[DiscordStatus.dnd]: {
+			status: "busy",
+			color: "red-500",
+		},
+		[DiscordStatus.offline]: {
+			status: "offline",
+			color: "blue-400",
+		},
+		[DiscordStatus.idle]: {
+			status: "away",
+			color: "amber-500",
+		},
+	};
+
+	if (data != undefined) {
+		const status = types[data.data.discord_status];
+		online_status.classList.remove("text-neutral-300/30");
+		online_status.classList.add(
+			`text-${status.color}`,
+			`shadow-${status.color}`
+		);
+		online_status.innerText = status.status;
+	}
 };
 
 const UpdateWeather = async (): Promise<void> => {

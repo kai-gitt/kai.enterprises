@@ -6,13 +6,14 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>kai.enterprises</title>
 	</head>
-	<body class="overflow-hidden">
+	<body
+		class="overflow-hidden absolute inset-0 h-full w-full bg-[#050505] bg-[radial-gradient(#e5e7eb05_1px,transparent_1px)] [background-size:16px_16px]">
 		<div class="trans content-none w-screen h-[1px]"></div>
 		<main
-			class="flex flex-col justify-center items-center bg-[#050505] m-0 p-0 w-screen h-screen">
+			class="flex flex-col justify-center items-center m-0 p-0 w-screen h-screen z-1">
 			<div class="gap-8 grid grid-cols-4 auto-rows-[14em] w-3/4">
 				<div
-					class="row-span-1 bg-neutral-900/10 p-4 rounded-2xl outline-2 outline-neutral-100/5 max-h-[8em]">
+					class="row-span-1 transition-colors hover:bg-neutral-950 bg-neutral-950/10 p-4 rounded-2xl outline-2 outline-neutral-100/5 max-h-[8em]">
 					<p
 						class="font-mono select-none text-neutral-300/30 text-sm">
 						<img
@@ -23,13 +24,14 @@
 					<p class="font-normal text-neutral-300/90 text-2xl pt-4">
 						I'm currently
 						<span
-							class="font-bold text-2xl text-emerald-500 shadow-emerald-500 text-glow-2xl"
-							>online</span
+							class="font-bold text-2xl text-neutral-300/30 text-glow-2xl"
+							id="online_status"
+							>—————</span
 						>.
 					</p>
 				</div>
 				<div
-					class="col-span-2 bg-neutral-900/10 p-4 rounded-2xl outline-2 outline-neutral-100/5">
+					class="col-span-2 transition-colors hover:bg-neutral-950 bg-neutral-950/10 p-4 rounded-2xl outline-2 outline-neutral-100/5">
 					<p
 						class="font-mono select-none text-neutral-300/30 text-sm">
 						<img
@@ -54,11 +56,11 @@
 
 						<div class="pl-8 pt-6">
 							<p
-								class="font-semibold font-mono text-neutral-300/90 text-3xl hover:underline">
+								class="font-semibold font-mono text-neutral-100/90 text-2xl hover:underline">
 								<a href="#" id="lastfm_title"> ———————————— </a>
 							</p>
 							<p
-								class="font-mono text-xl text-neutral-300/70"
+								class="font-mono text-md text-neutral-100/70"
 								id="lastfm_subtitle">
 								——————
 							</p>
@@ -67,7 +69,7 @@
 				</div>
 
 				<div
-					class="row-span-2 bg-neutral-900/10 p-4 rounded-2xl outline-2 outline-neutral-100/5">
+					class="row-span-2 transition-colors hover:bg-neutral-950 bg-neutral-950/10 p-4 rounded-2xl outline-2 outline-neutral-100/5">
 					<p
 						class="font-mono select-none text-neutral-300/30 text-sm">
 						<img
@@ -77,7 +79,7 @@
 					</p>
 				</div>
 				<div
-					class="row-span-2 bg-neutral-900/10 p-4 rounded-2xl outline-2 outline-neutral-100/5 min-h-[8em] mt-[-6em]">
+					class="row-span-2 transition-colors hover:bg-neutral-950 bg-neutral-950/10 p-4 rounded-2xl outline-2 outline-neutral-100/5 min-h-[8em] mt-[-6em]">
 					<p
 						class="font-mono select-none text-neutral-300/30 text-sm">
 						<img
@@ -87,7 +89,7 @@
 					</p>
 				</div>
 				<div
-					class="col-span-2 bg-neutral-900/10 p-4 rounded-2xl outline-2 outline-neutral-100/5 min-h-[19em]">
+					class="col-span-2 transition-colors hover:bg-neutral-950 bg-neutral-950/10 p-4 rounded-2xl outline-2 outline-neutral-100/5 min-h-[19em]">
 					<p
 						class="font-mono select-none text-neutral-300/30 text-sm">
 						<img
@@ -160,7 +162,7 @@
 				</div>
 
 				<div
-					class="row-span-1 bg-neutral-900/10 p-4 rounded-2xl outline-2 outline-neutral-100/5">
+					class="row-span-1 transition-colors hover:bg-neutral-950 bg-neutral-950/10 p-4 rounded-2xl outline-2 outline-neutral-100/5">
 					<p
 						class="font-mono select-none text-neutral-300/30 text-sm">
 						<img
@@ -171,6 +173,14 @@
 				</div>
 			</div>
 		</main>
+		<!-- color cache, make sure tailwind keeps these colours in dist -->
+		<!-- i know it sound stupid, but you gotta do what you gotta do -->
+		<span class="invisible select-none text-transparent">
+			<p class="text-amber-500 shadow-amber-500"></p>
+			<p class="text-red-500 shadow-red-500"></p>
+			<p class="text-emerald-500 shadow-emerald-500"></p>
+			<p class="text-blue-400 shadow-blue-400"></p>
+		</span>
 
 		<script type="module" src="/src/main.ts" defer></script>
 	</body>

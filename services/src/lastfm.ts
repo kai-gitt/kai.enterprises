@@ -12,12 +12,14 @@ export async function fetchLastfmData(
 	apiKey: string,
 	cache: KVNamespace
 ): Promise<Track | null> {
+	let failedSilently = false;
 	if (await isCached(KEYS.LFM_LAST_UPDATED, CACHE_TIMEOUT, cache)) {
 		const data = await cache.get(KEYS.LFM);
 		if (data != null) {
 			try {
 				return JSON.parse(data) as Track;
 			} catch (_) {
+				failedSilently = true;
 				/* fail silently, let the cache update */
 			}
 		}
@@ -30,7 +32,10 @@ export async function fetchLastfmData(
 		const data = (await req.json()) as LastFMResponse;
 		const track = data.recenttracks.track[0];
 		if (!track) {
-			return null;
+			// if we failed, return cached data.
+			return failedSilently
+				? null
+				: ((await cache.get(KEYS.LFM)) as unknown as Track);
 		}
 		await cache.put(KEYS.LFM_LAST_UPDATED, Date.now().toString());
 		await cache.put(KEYS.LFM, JSON.stringify(track));
