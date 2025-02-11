@@ -1,7 +1,7 @@
 import { LastFMResponse, Track } from "./model";
 import { isCached } from "./wakatime";
 
-const CACHE_TIMEOUT = 7 * 60 * 1000; // 30 minutes in miliseconds
+const CACHE_TIMEOUT = 7 * 60 * 1000; // 7 minutes in miliseconds
 const KEYS = {
 	LFM_LAST_UPDATED: "lastfm-last-updated",
 	LFM: "lastfm-data",
@@ -28,10 +28,15 @@ export async function fetchLastfmData(
 	try {
 		const req = await fetch(url);
 		const data = (await req.json()) as LastFMResponse;
+		const track = data.recenttracks.track[0];
+		if (!track) {
+			return null;
+		}
 		await cache.put(KEYS.LFM_LAST_UPDATED, Date.now().toString());
-		await cache.put(KEYS.LFM, JSON.stringify(data.recenttracks.track[0]));
-		return data.recenttracks.track[0];
+		await cache.put(KEYS.LFM, JSON.stringify(track));
+		return track;
 	} catch (e) {
+		console.error("[lastfm]", e);
 		return null;
 	}
 }

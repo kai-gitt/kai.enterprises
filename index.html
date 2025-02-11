@@ -11,7 +11,7 @@
 		<div class="gap-8 grid grid-cols-4 auto-rows-[14em] w-3/4">
 			<div
 				class="row-span-1 bg-neutral-900/10 p-4 rounded-2xl outline-2 outline-neutral-100/5 max-h-[8em]">
-				<p class="font-sans text-neutral-300/30 text-sm">
+				<p class="font-sans select-none text-neutral-300/30 text-sm">
 					<img
 						src="icons/list.svg"
 						class="inline opacity-40 invert w-4 h-4 pb-0.5" />
@@ -20,18 +20,18 @@
 				<p class="font-normal text-neutral-300/90 text-2xl pt-4">
 					I'm currently
 					<span
-						class="font-semibold text-emerald-500 text-glow-emerald-500"
+						class="font-bold text-2xl text-emerald-500 shadow-emerald-500 text-glow-2xl"
 						>online</span
 					>.
 				</p>
 			</div>
 			<div
 				class="col-span-2 bg-neutral-900/10 p-4 rounded-2xl outline-2 outline-neutral-100/5">
-				<p class="font-sans text-neutral-300/30 text-sm">
+				<p class="font-sans select-none text-neutral-300/30 text-sm">
 					<img
 						src="icons/music.svg"
 						class="inline opacity-40 invert w-4 h-4 pb-0.5" />
-					last_fm.go
+					last_fm.png
 				</p>
 				<div class="pt-6 flex flex-row">
 					<div class="relative rounded-xl w-32 h-32 bg-neutral-900/5">
@@ -63,7 +63,7 @@
 
 			<div
 				class="row-span-2 bg-neutral-900/10 p-4 rounded-2xl outline-2 outline-neutral-100/5">
-				<p class="font-sans text-neutral-300/30 text-sm">
+				<p class="font-sans select-none text-neutral-300/30 text-sm">
 					<img
 						src="icons/code.svg"
 						class="inline opacity-40 invert w-4 h-4 pb-0.5" />
@@ -72,7 +72,7 @@
 			</div>
 			<div
 				class="row-span-2 bg-neutral-900/10 p-4 rounded-2xl outline-2 outline-neutral-100/5 min-h-[8em] mt-[-6em]">
-				<p class="font-sans text-neutral-300/30 text-sm">
+				<p class="font-sans select-none text-neutral-300/30 text-sm">
 					<img
 						src="icons/adjustments.svg"
 						class="inline opacity-40 invert w-4 h-4 pb-0.5" />
@@ -81,7 +81,7 @@
 			</div>
 			<div
 				class="col-span-2 bg-neutral-900/10 p-4 rounded-2xl outline-2 outline-neutral-100/5 min-h-[19em]">
-				<p class="font-sans text-neutral-300/30 text-sm">
+				<p class="font-sans select-none text-neutral-300/30 text-sm">
 					<img
 						src="icons/user.svg"
 						class="inline opacity-40 invert w-4 h-4 pb-0.5" />
@@ -93,7 +93,8 @@
 				<div class="gap-4 grid grid-cols-3 grid-rows-1 w-full h-full">
 					<div
 						class="bg-neutral-900/15 p-4 rounded-2xl outline-2 outline-neutral-100/5">
-						<p class="font-sans text-neutral-300/30 text-sm">
+						<p
+							class="font-sans select-none text-neutral-300/30 text-sm">
 							<img
 								src="icons/calendar.svg"
 								class="inline opacity-40 invert w-4 h-4 pb-0.5" />
@@ -108,7 +109,8 @@
 					</div>
 					<div
 						class="bg-neutral-900/15 p-4 rounded-2xl outline-2 outline-neutral-100/5">
-						<p class="font-sans text-neutral-300/30 text-sm">
+						<p
+							class="font-sans select-none text-neutral-300/30 text-sm">
 							<img
 								src="icons/clock.svg"
 								class="inline opacity-40 invert w-4 h-4 pb-0.5" />
@@ -123,27 +125,34 @@
 					</div>
 					<div
 						class="bg-neutral-900/15 p-4 rounded-2xl outline-2 outline-neutral-100/5">
-						<p class="font-sans text-neutral-300/30 text-sm">
+						<p
+							class="font-sans select-none text-neutral-300/30 text-sm">
 							<img
 								src="icons/cloud.svg"
 								class="inline opacity-40 invert w-4 h-4 pb-0.5" />
 							weather.go
 						</p>
-						<p class="pt-6 text-3xl text-neutral-300/90 font-mono">
+						<p
+							class="pt-6 text-3xl text-neutral-300/90 font-mono"
+							id="weather_temp">
 							-3.7°C
 						</p>
-						<p class="text-neutral-300/70 font-mono">cloudy</p>
+						<p
+							class="text-neutral-300/70 font-mono"
+							id="weather_condition">
+							cloudy
+						</p>
 					</div>
 				</div>
 			</div>
 
 			<div
 				class="row-span-1 bg-neutral-900/10 p-4 rounded-2xl outline-2 outline-neutral-100/5">
-				<p class="font-sans text-neutral-300/30 text-sm">
+				<p class="font-sans select-none text-neutral-300/30 text-sm">
 					<img
 						src="icons/adjustments.svg"
 						class="inline opacity-40 invert w-4 h-4 pb-0.5" />
-					settings.go
+					settings.toml
 				</p>
 			</div>
 		</div>
