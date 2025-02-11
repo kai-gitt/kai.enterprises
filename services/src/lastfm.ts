@@ -3,7 +3,7 @@ import { shouldRefetch } from "./wakatime";
 
 const CACHE_TIMEOUT = 30 * 60 * 1000; // 30 minutes in miliseconds
 const KEYS = {
-	LFM_LAST_UPDATED: "wakatime-last-updated",
+	LFM_LAST_UPDATED: "lastfm-last-updated",
 	LFM: "lastfm-data",
 };
 
