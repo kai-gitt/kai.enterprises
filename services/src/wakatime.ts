@@ -15,7 +15,7 @@ export async function fetchWakaTimeData(
 	apiKey: string,
 	cache: KVNamespace
 ): Promise<CumulativeTotal | null> {
-	if (!(await shouldRefetch(KEYS.WAKA_LAST_UPDATED, CACHE_TIMEOUT, cache))) {
+	if (await shouldRefetch(KEYS.WAKA_LAST_UPDATED, CACHE_TIMEOUT, cache)) {
 		const data = await cache.get(KEYS.WAKA);
 		if (data != null) {
 			try {

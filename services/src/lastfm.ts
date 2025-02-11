@@ -12,7 +12,7 @@ export async function fetchLastfmData(
 	apiKey: string,
 	cache: KVNamespace
 ): Promise<Track | null> {
-	if (!(await shouldRefetch(KEYS.LFM_LAST_UPDATED, CACHE_TIMEOUT, cache))) {
+	if (await shouldRefetch(KEYS.LFM_LAST_UPDATED, CACHE_TIMEOUT, cache)) {
 		const data = await cache.get(KEYS.LFM);
 		if (data != null) {
 			try {
