@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", async (_) => {
 	//@ts-ignore
 	let e = Reveal(atob(E), 16);
 	em.href = `mailto:${e}`;
-	em.innerText = `${e}`;
+	em.innerText = `"${e}"`;
 
 	setInterval(UpdateClock, 100);
 	// disable fetching live data if in a dev environment.
