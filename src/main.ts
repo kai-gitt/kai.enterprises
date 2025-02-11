@@ -6,9 +6,12 @@ import {
 	Track,
 	WeatherData,
 } from "./model";
+//@ts-ignore
+import { Reveal } from "./e.js";
 
 const TZ_OFFSET = 1;
 const APPROX = [53.4, 14.5];
+const E = "fXZSfnV+RHyGjX+NjI+HkoWU";
 
 let clock: HTMLParagraphElement;
 let wakatime: HTMLParagraphElement;
@@ -23,6 +26,7 @@ let weather: {
 	condition: HTMLParagraphElement;
 };
 let online_status: HTMLParagraphElement;
+let em: HTMLAnchorElement;
 
 document.addEventListener("DOMContentLoaded", async (_) => {
 	// couldn't think of a better way :<
@@ -47,6 +51,12 @@ document.addEventListener("DOMContentLoaded", async (_) => {
 		)! as HTMLParagraphElement,
 		temp: document.getElementById("weather_temp")! as HTMLParagraphElement,
 	};
+	em = document.getElementById("email")! as HTMLAnchorElement;
+	//@ts-ignore
+	let e = Reveal(atob(E), 16);
+	em.href = `mailto:${e}`;
+	em.innerText = `${e}`;
+
 	setInterval(UpdateClock, 100);
 	// disable fetching live data if in a dev environment.
 	if (
@@ -259,3 +269,15 @@ function wmoToDescription(wmoCode: number): string {
 		weatherDescriptions[wmoCode].toLowerCase() || "a black hole is forming"
 	);
 }
+
+const te = new TextEncoder();
+let keyPair = await window.crypto.subtle.generateKey(
+	{
+		name: "RSA-OAEP",
+		modulusLength: 4096,
+		publicExponent: new Uint8Array([1, 0, 1]),
+		hash: "SHA-256",
+	},
+	true,
+	["encrypt", "decrypt"]
+);
