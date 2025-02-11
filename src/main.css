@@ -1,5 +1,19 @@
 @import "tailwindcss";
 
+@utility trans {
+	background: linear-gradient(
+		to right,
+		#55cdfc 20%,
+		/* Light Blue */ #f7a3b6 20%,
+		#f7a3b6 40%,
+		/* Pink */ #ffffff 40%,
+		#ffffff 60%,
+		/* White */ #f7a3b6 60%,
+		#f7a3b6 80%,
+		/* Pink */ #55cdfc 80% /* Light Blue */
+	);
+}
+
 @utility text-glow-3xl {
 	text-shadow: 0px 0px 80px var(--tw-shadow-color);
 }

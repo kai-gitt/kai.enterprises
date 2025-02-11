@@ -6,156 +6,171 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>kai.enterprises</title>
 	</head>
-	<body
-		class="flex flex-col justify-center items-center bg-[#050505] m-0 p-0 w-screen h-screen">
-		<div class="gap-8 grid grid-cols-4 auto-rows-[14em] w-3/4">
-			<div
-				class="row-span-1 bg-neutral-900/10 p-4 rounded-2xl outline-2 outline-neutral-100/5 max-h-[8em]">
-				<p class="font-mono select-none text-neutral-300/30 text-sm">
-					<img
-						src="icons/list.svg"
-						class="inline opacity-40 invert w-4 h-4 pb-0.5" />
-					status.go
-				</p>
-				<p class="font-normal text-neutral-300/90 text-2xl pt-4">
-					I'm currently
-					<span
-						class="font-bold text-2xl text-emerald-500 shadow-emerald-500 text-glow-2xl"
-						>online</span
-					>.
-				</p>
-			</div>
-			<div
-				class="col-span-2 bg-neutral-900/10 p-4 rounded-2xl outline-2 outline-neutral-100/5">
-				<p class="font-mono select-none text-neutral-300/30 text-sm">
-					<img
-						src="icons/music.svg"
-						class="inline opacity-40 invert w-4 h-4 pb-0.5" />
-					last_fm.png
-				</p>
-				<div class="pt-6 flex flex-row">
-					<div class="relative rounded-xl w-32 h-32 bg-neutral-900/5">
+	<body class="overflow-hidden">
+		<div class="trans content-none w-screen h-[1px]"></div>
+		<main
+			class="flex flex-col justify-center items-center bg-[#050505] m-0 p-0 w-screen h-screen">
+			<div class="gap-8 grid grid-cols-4 auto-rows-[14em] w-3/4">
+				<div
+					class="row-span-1 bg-neutral-900/10 p-4 rounded-2xl outline-2 outline-neutral-100/5 max-h-[8em]">
+					<p
+						class="font-mono select-none text-neutral-300/30 text-sm">
+						<img
+							src="icons/list.svg"
+							class="inline opacity-40 invert w-4 h-4 pb-0.5" />
+						status.go
+					</p>
+					<p class="font-normal text-neutral-300/90 text-2xl pt-4">
+						I'm currently
+						<span
+							class="font-bold text-2xl text-emerald-500 shadow-emerald-500 text-glow-2xl"
+							>online</span
+						>.
+					</p>
+				</div>
+				<div
+					class="col-span-2 bg-neutral-900/10 p-4 rounded-2xl outline-2 outline-neutral-100/5">
+					<p
+						class="font-mono select-none text-neutral-300/30 text-sm">
 						<img
 							src="icons/music.svg"
-							alt="album cover glow"
-							class="absolute inset-0 w-full h-full blur-xl"
-							id="lastfm_cover_blur" />
+							class="inline opacity-40 invert w-4 h-4 pb-0.5" />
+						last_fm.png
+					</p>
+					<div class="pt-6 flex flex-row">
+						<div
+							class="relative rounded-xl w-32 h-32 bg-neutral-900/5">
+							<img
+								src="icons/music.svg"
+								alt="album cover glow"
+								class="absolute inset-0 w-full h-full blur-xl"
+								id="lastfm_cover_blur" />
+							<img
+								src="icons/music.svg"
+								alt="album cover"
+								class="relative z-10 w-full h-full rounded-xl invert opacity-30"
+								id="lastfm_cover" />
+						</div>
+
+						<div class="pl-8 pt-6">
+							<p
+								class="font-semibold font-mono text-neutral-300/90 text-3xl hover:underline">
+								<a href="#" id="lastfm_title"> ———————————— </a>
+							</p>
+							<p
+								class="font-mono text-xl text-neutral-300/70"
+								id="lastfm_subtitle">
+								——————
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div
+					class="row-span-2 bg-neutral-900/10 p-4 rounded-2xl outline-2 outline-neutral-100/5">
+					<p
+						class="font-mono select-none text-neutral-300/30 text-sm">
 						<img
-							src="icons/music.svg"
-							alt="album cover"
-							class="relative z-10 w-full h-full rounded-xl invert opacity-30"
-							id="lastfm_cover" />
-					</div>
+							src="icons/code.svg"
+							class="inline opacity-40 invert w-4 h-4 pb-0.5" />
+						languages.go
+					</p>
+				</div>
+				<div
+					class="row-span-2 bg-neutral-900/10 p-4 rounded-2xl outline-2 outline-neutral-100/5 min-h-[8em] mt-[-6em]">
+					<p
+						class="font-mono select-none text-neutral-300/30 text-sm">
+						<img
+							src="icons/adjustments.svg"
+							class="inline opacity-40 invert w-4 h-4 pb-0.5" />
+						projects.go
+					</p>
+				</div>
+				<div
+					class="col-span-2 bg-neutral-900/10 p-4 rounded-2xl outline-2 outline-neutral-100/5 min-h-[19em]">
+					<p
+						class="font-mono select-none text-neutral-300/30 text-sm">
+						<img
+							src="icons/user.svg"
+							class="inline opacity-40 invert w-4 h-4 pb-0.5" />
+						about_me.go
+					</p>
+				</div>
 
-					<div class="pl-8 pt-6">
-						<p
-							class="font-semibold font-mono text-neutral-300/90 text-3xl hover:underline">
-							<a href="#" id="lastfm_title"> ———————————— </a>
-						</p>
-						<p
-							class="font-mono text-xl text-neutral-300/70"
-							id="lastfm_subtitle">
-							——————
-						</p>
+				<div class="col-span-2 pt-20">
+					<div
+						class="gap-4 grid grid-cols-3 grid-rows-1 w-full h-full">
+						<div
+							class="bg-neutral-900/15 p-4 rounded-2xl outline-2 outline-neutral-100/5">
+							<p
+								class="font-mono select-none text-neutral-300/30 text-sm">
+								<img
+									src="icons/calendar.svg"
+									class="inline opacity-40 invert w-4 h-4 pb-0.5" />
+								date_time.go
+							</p>
+							<p
+								class="pt-6 text-3xl text-neutral-300/90 font-mono"
+								id="current_time">
+								00:21:44
+							</p>
+							<p class="text-neutral-300/70 font-mono">
+								CET (GMT+1)
+							</p>
+						</div>
+						<div
+							class="bg-neutral-900/15 p-4 rounded-2xl outline-2 outline-neutral-100/5">
+							<p
+								class="font-mono select-none text-neutral-300/30 text-sm">
+								<img
+									src="icons/clock.svg"
+									class="inline opacity-40 invert w-4 h-4 pb-0.5" />
+								spent_time.go
+							</p>
+							<p
+								class="pt-6 text-2xl text-neutral-300/90 font-mono"
+								id="wakatime">
+								- hr -- min
+							</p>
+							<p class="text-neutral-300/70 font-mono">
+								spent today
+							</p>
+						</div>
+						<div
+							class="bg-neutral-900/15 p-4 rounded-2xl outline-2 outline-neutral-100/5">
+							<p
+								class="font-mono select-none text-neutral-300/30 text-sm">
+								<img
+									src="icons/cloud.svg"
+									class="inline opacity-40 invert w-4 h-4 pb-0.5" />
+								weather.go
+							</p>
+							<p
+								class="pt-6 text-3xl text-neutral-300/90 font-mono"
+								id="weather_temp">
+								-3.7°C
+							</p>
+							<p
+								class="text-neutral-300/70 font-mono"
+								id="weather_condition">
+								cloudy
+							</p>
+						</div>
 					</div>
 				</div>
-			</div>
 
-			<div
-				class="row-span-2 bg-neutral-900/10 p-4 rounded-2xl outline-2 outline-neutral-100/5">
-				<p class="font-mono select-none text-neutral-300/30 text-sm">
-					<img
-						src="icons/code.svg"
-						class="inline opacity-40 invert w-4 h-4 pb-0.5" />
-					languages.go
-				</p>
-			</div>
-			<div
-				class="row-span-2 bg-neutral-900/10 p-4 rounded-2xl outline-2 outline-neutral-100/5 min-h-[8em] mt-[-6em]">
-				<p class="font-mono select-none text-neutral-300/30 text-sm">
-					<img
-						src="icons/adjustments.svg"
-						class="inline opacity-40 invert w-4 h-4 pb-0.5" />
-					projects.go
-				</p>
-			</div>
-			<div
-				class="col-span-2 bg-neutral-900/10 p-4 rounded-2xl outline-2 outline-neutral-100/5 min-h-[19em]">
-				<p class="font-mono select-none text-neutral-300/30 text-sm">
-					<img
-						src="icons/user.svg"
-						class="inline opacity-40 invert w-4 h-4 pb-0.5" />
-					about_me.go
-				</p>
-			</div>
-
-			<div class="col-span-2 pt-20">
-				<div class="gap-4 grid grid-cols-3 grid-rows-1 w-full h-full">
-					<div
-						class="bg-neutral-900/15 p-4 rounded-2xl outline-2 outline-neutral-100/5">
-						<p
-							class="font-mono select-none text-neutral-300/30 text-sm">
-							<img
-								src="icons/calendar.svg"
-								class="inline opacity-40 invert w-4 h-4 pb-0.5" />
-							date_time.go
-						</p>
-						<p
-							class="pt-6 text-3xl text-neutral-300/90 font-mono"
-							id="current_time">
-							00:21:44
-						</p>
-						<p class="text-neutral-300/70 font-mono">CET (GMT+1)</p>
-					</div>
-					<div
-						class="bg-neutral-900/15 p-4 rounded-2xl outline-2 outline-neutral-100/5">
-						<p
-							class="font-mono select-none text-neutral-300/30 text-sm">
-							<img
-								src="icons/clock.svg"
-								class="inline opacity-40 invert w-4 h-4 pb-0.5" />
-							spent_time.go
-						</p>
-						<p
-							class="pt-6 text-2xl text-neutral-300/90 font-mono"
-							id="wakatime">
-							- hr -- min
-						</p>
-						<p class="text-neutral-300/70 font-mono">spent today</p>
-					</div>
-					<div
-						class="bg-neutral-900/15 p-4 rounded-2xl outline-2 outline-neutral-100/5">
-						<p
-							class="font-mono select-none text-neutral-300/30 text-sm">
-							<img
-								src="icons/cloud.svg"
-								class="inline opacity-40 invert w-4 h-4 pb-0.5" />
-							weather.go
-						</p>
-						<p
-							class="pt-6 text-3xl text-neutral-300/90 font-mono"
-							id="weather_temp">
-							-3.7°C
-						</p>
-						<p
-							class="text-neutral-300/70 font-mono"
-							id="weather_condition">
-							cloudy
-						</p>
-					</div>
+				<div
+					class="row-span-1 bg-neutral-900/10 p-4 rounded-2xl outline-2 outline-neutral-100/5">
+					<p
+						class="font-mono select-none text-neutral-300/30 text-sm">
+						<img
+							src="icons/adjustments.svg"
+							class="inline opacity-40 invert w-4 h-4 pb-0.5" />
+						settings.toml
+					</p>
 				</div>
 			</div>
-
-			<div
-				class="row-span-1 bg-neutral-900/10 p-4 rounded-2xl outline-2 outline-neutral-100/5">
-				<p class="font-mono select-none text-neutral-300/30 text-sm">
-					<img
-						src="icons/adjustments.svg"
-						class="inline opacity-40 invert w-4 h-4 pb-0.5" />
-					settings.toml
-				</p>
-			</div>
-		</div>
+		</main>
 
 		<script type="module" src="/src/main.ts" defer></script>
 	</body>
