@@ -48,10 +48,16 @@ document.addEventListener("DOMContentLoaded", async (_) => {
 		temp: document.getElementById("weather_temp")! as HTMLParagraphElement,
 	};
 	setInterval(UpdateClock, 100);
-	await UpdateWakatimeData();
-	await UpdateLastFMData();
-	await UpdateWeather();
-	await UpdateOnlineStatus();
+	// disable fetching live data if in a dev environment.
+	if (
+		window.location.host == "kai.enterprises" ||
+		window.location.host == "staging.kai.enterprises"
+	) {
+		await UpdateWakatimeData();
+		await UpdateLastFMData();
+		await UpdateWeather();
+		await UpdateOnlineStatus();
+	}
 });
 
 const UpdateClock = () => {
