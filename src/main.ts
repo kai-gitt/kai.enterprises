@@ -3,7 +3,6 @@ import {
 	CumulativeTotal,
 	DiscordResponse,
 	DiscordStatus,
-	Track,
 	WeatherData,
 } from "./model";
 //@ts-ignore
@@ -59,17 +58,17 @@ document.addEventListener("DOMContentLoaded", async (_) => {
 
 	setInterval(UpdateClock, 100);
 	// disable fetching live data if in a dev environment.
-	if (
-		window.location.host == "kai.enterprises" ||
-		window.location.host == "staging.kai.enterprises"
-	) {
-		await Promise.all([
-			UpdateWakatimeData(),
-			UpdateLastFMData(),
-			UpdateWeather(),
-			UpdateOnlineStatus(),
-		]);
-	}
+	// if (
+	// 	window.location.host == "kai.enterprises" ||
+	// 	window.location.host == "staging.kai.enterprises"
+	// ) {
+	await Promise.all([
+		UpdateWakatimeData(),
+		// UpdateLastFMData(), // now updated by Discord
+		UpdateWeather(),
+		UpdateOnlineStatus(),
+	]);
+	// }
 
 	document.getElementById("loading_reminder")!.remove();
 });
@@ -93,29 +92,29 @@ const UpdateWakatimeData = async (): Promise<void> => {
 	wakatime.innerText = data.text;
 };
 
-const UpdateLastFMData = async (): Promise<void> => {
-	const req = await fetch("https://services.kai.enterprises/lastfm");
-	const data = (await req.json()) as Track;
+// const UpdateLastFMData = async (): Promise<void> => {
+// 	const req = await fetch("https://services.kai.enterprises/lastfm");
+// 	const data = (await req.json()) as Track;
 
-	if (data.image[3]["#text"] != "") {
-		lastfm.cover.src = data.image[3]["#text"];
-		lastfm.cover_blur.src = data.image[3]["#text"];
-		lastfm.cover.alt = `cover art of ${data.name}`;
-		lastfm.cover.classList.remove("invert");
-		lastfm.cover.classList.remove("opacity-*");
-		lastfm.cover.classList.remove("opacity-30");
-		lastfm.cover.classList.remove("p-*");
-		lastfm.cover.classList.remove("p-8");
-	}
+// 	if (data.image[3]["#text"] != "") {
+// 		lastfm.cover.src = data.image[3]["#text"];
+// 		lastfm.cover_blur.src = data.image[3]["#text"];
+// 		lastfm.cover.alt = `cover art of ${data.name}`;
+// 		lastfm.cover.classList.remove("invert");
+// 		lastfm.cover.classList.remove("opacity-*");
+// 		lastfm.cover.classList.remove("opacity-30");
+// 		lastfm.cover.classList.remove("p-*");
+// 		lastfm.cover.classList.remove("p-8");
+// 	}
 
-	lastfm.title.innerText = data.name;
-	lastfm.title.href = data.url;
-	lastfm.subtitle.innerText = `${data.album["#text"]} • ${data.artist["#text"]}`;
-};
+// 	lastfm.title.innerText = data.name;
+// 	lastfm.title.href = data.url;
+// 	lastfm.subtitle.innerText = `${data.album["#text"]} • ${data.artist["#text"]}`;
+// };
 
 const UpdateOnlineStatus = async (): Promise<void> => {
 	const req = await fetch("https://services.kai.enterprises/discord");
-	const data = (await req.json()) as DiscordResponse;
+	const json = (await req.json()) as DiscordResponse;
 
 	const types = {
 		[DiscordStatus.online]: {
@@ -136,14 +135,27 @@ const UpdateOnlineStatus = async (): Promise<void> => {
 		},
 	};
 
-	if (data != undefined) {
-		const status = types[data.data.discord_status];
+	if (json != undefined) {
+		const data = json.data;
+		const status = types[data.discord_status];
 		online_status.classList.remove("text-neutral-300/30");
 		online_status.classList.add(
 			`text-${status.color}`,
 			`shadow-${status.color}`
 		);
 		online_status.innerText = status.status;
+
+		lastfm.cover.src = data.spotify.album_art_url;
+		lastfm.cover_blur.src = data.spotify.album_art_url;
+		lastfm.cover.alt = `cover art of ${data.spotify.song}`;
+		lastfm.cover.classList.remove("invert");
+		lastfm.cover.classList.remove("opacity-*");
+		lastfm.cover.classList.remove("opacity-30");
+		lastfm.cover.classList.remove("p-*");
+		lastfm.cover.classList.remove("p-8");
+
+		lastfm.title.innerText = data.spotify.song;
+		lastfm.subtitle.innerText = `${data.spotify.album} • ${data.spotify.artist}`;
 	}
 };
 

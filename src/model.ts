@@ -5,37 +5,6 @@ export interface CumulativeTotal {
 	text: string;
 }
 
-export interface Track {
-	artist: Artist;
-	streamable: string;
-	image: Image[];
-	mbid: string;
-	album: Album;
-	name: string;
-	url: string;
-	date: Date;
-}
-
-interface Artist {
-	mbid: string;
-	"#text": string;
-}
-
-interface Image {
-	size: string;
-	"#text": string;
-}
-
-interface Album {
-	mbid: string;
-	"#text": string;
-}
-
-interface Date {
-	uts: string;
-	"#text": string;
-}
-
 export interface WeatherData {
 	latitude: number;
 	longitude: number;
@@ -79,6 +48,19 @@ interface Data {
 	active_on_discord_desktop: boolean;
 	active_on_discord_mobile: boolean;
 	listening_to_spotify: boolean;
+	spotify: Spotify;
+}
+
+interface Spotify {
+	timestamps: {
+		start: number;
+		end: number;
+	};
+	album: string;
+	album_art_url: string;
+	artist: string;
+	song: string;
+	track_id: string;
 }
 
 export enum DiscordStatus {

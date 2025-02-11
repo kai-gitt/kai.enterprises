@@ -32,13 +32,13 @@ export default {
 					env.cache
 				);
 				return GenericResponse(waka);
-			case "/lastfm":
-				const lastfm = await fetchLastfmData(
-					env.LFM_USER_ID,
-					env.LFM_API_KEY,
-					env.cache
-				);
-				return GenericResponse(lastfm);
+			// case "/lastfm":
+			// 	const lastfm = await fetchLastfmData(
+			// 		env.LFM_USER_ID,
+			// 		env.LFM_API_KEY,
+			// 		env.cache
+			// 	);
+			// 	return GenericResponse(lastfm);
 			case "/discord":
 				const discord = await fetchDiscordApi(env.DISCORD_USER_ID);
 				return GenericResponse(discord);
