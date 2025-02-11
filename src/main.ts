@@ -54,10 +54,10 @@ document.addEventListener("DOMContentLoaded", async (_) => {
 		window.location.host == "staging.kai.enterprises"
 	) {
 		await Promise.all([
-			UpdateWakatimeData,
-			UpdateLastFMData,
-			UpdateWeather,
-			UpdateOnlineStatus,
+			UpdateWakatimeData(),
+			UpdateLastFMData(),
+			UpdateWeather(),
+			UpdateOnlineStatus(),
 		]);
 	}
 });
