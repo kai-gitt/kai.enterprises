@@ -19,10 +19,7 @@ export default {
 				);
 				const response = new Response(JSON.stringify(data));
 				response.headers.append("Content-Type", "application/json");
-				response.headers.append(
-					"Access-Control-Allow-Origin",
-					"kai.enterprises"
-				);
+				response.headers.append("Access-Control-Allow-Origin", "*");
 				response.headers.append(
 					"Access-Control-Allow-Methods",
 					"GET,HEAD,OPTIONS"
