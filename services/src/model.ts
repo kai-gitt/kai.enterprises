@@ -202,7 +202,8 @@ interface Data {
 	spotify: Spotify;
 }
 
-interface Kv {}
+interface Kv {
+}
 
 interface DiscordUser {
 	id: string;

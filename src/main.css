@@ -1,17 +1,28 @@
 @import "tailwindcss";
 
+@utility quoted {
+	&::after,
+	&::before {
+		content: '"';
+	}
+}
+
 @utility trans {
 	background: linear-gradient(
 		to right,
 		#55cdfc 20%,
-		/* Light Blue */ #f7a3b6 20%,
+			/* Light Blue */ #f7a3b6 20%,
 		#f7a3b6 40%,
-		/* Pink */ #ffffff 40%,
+			/* Pink */ #ffffff 40%,
 		#ffffff 60%,
-		/* White */ #f7a3b6 60%,
+			/* White */ #f7a3b6 60%,
 		#f7a3b6 80%,
-		/* Pink */ #55cdfc 80% /* Light Blue */
+			/* Pink */ #55cdfc 80% /* Light Blue */
 	);
+}
+
+@utility animate-ping-slow {
+	animation: ping 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
 @utility text-glow-3xl {
@@ -33,5 +44,5 @@
 @utility shadow-4xl {
 	--tw-shadow: 0 0px 4000px 0px;
 	box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
-		var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+	var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
 }

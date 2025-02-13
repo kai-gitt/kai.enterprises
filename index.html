@@ -1,134 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<link rel="icon" type="image/png" href="/icon.png" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>kai.enterprises</title>
-	</head>
-	<body
-		class="overflow-hidden absolute inset-0 h-full w-full bg-[#050505] bg-[radial-gradient(#e5e7eb05_1px,transparent_1px)] [background-size:16px_16px]">
-		<div class="trans content-none w-screen h-[1px]"></div>
-		<span class="absolute text-white/60 font-mono p-8" id="loading_reminder"
-			>&NestedGreaterGreater; fetching data may take a while</span
-		>
-		<span class="sr-only" aria-hidden="true">
+<head>
+	<meta charset="UTF-8" />
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+	<meta content="@kai@blahaj.social" name="fediverse:creator" />
+	<meta content="personal website of Kai." name="description" />
+	<meta content="personal website, projects, contact" name="keywords" />
+	<meta content="Kai" name="author" />
+	<meta content="index, follow" name="robots" />
+
+	<meta content="website" property="og:type" />
+	<meta content="https://kai.enterprises" property="og:url" />
+	<meta content="kai.enterprises" property="og:title" />
+	<meta content="personal website of Kai." property="og:description" />
+
+	<link href="/icon.png" rel="apple-touch-icon" />
+	<link href="/icon.png" rel="icon" type="image/png" />
+
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta
+		name="apple-mobile-web-app-status-bar-style"
+		content="black-translucent" />
+	<meta name="apple-mobile-web-app-title" content="kai.enterprises" />
+
+	<meta content="#f6339a" name="theme-color" />
+	<title>kai.enterprises</title>
+</head>
+<body
+	class="md:overflow-hidden absolute inset-0 h-full w-full bg-[#050505] bg-[radial-gradient(#e5e7eb05_1px,transparent_1px)] [background-size:16px_16px]">
+<div class="md:trans content-none w-screen h-[1px]"></div>
+<span class="absolute text-white/50 font-mono p-8 hidden md:block" id="loading_reminder"
+>&NestedGreaterGreater; fetching data may take a while
+			<span class="text-white/30"
+			>(or you&apos;re getting rate limited)</span
+			></span
+>
+<span aria-hidden="true" class="sr-only hidden">
 			email me at
 			<a href="mailto:trap@kai.enterprises">trap@kai.enterprises</a>
 		</span>
-		<main
-			class="flex flex-col justify-center items-center m-0 p-0 w-screen h-screen z-1">
-			<div class="gap-8 grid grid-cols-4 auto-rows-[14em] w-3/4">
+<main
+	class="md:flex flex-col justify-center items-center m-0 p-0 w-screen h-screen z-1">
+	<div class="gap-8 inline md:grid grid-cols-4 auto-rows-[14em] w-3/4">
+		<div
+			class="row-span-1 transition-colors hover:bg-neutral-950 bg-neutral-950/10 p-4 md:rounded-2xl md:outline-2 outline-neutral-100/5 max-h-[8em]">
+			<p
+				class="font-mono select-none text-neutral-300/30 text-sm">
+				<img
+					alt="list icon"
+					class="inline opacity-40 invert w-4 h-4 pb-0.5"
+					src="/icons/list.svg" />
+				status.go >
+			</p>
+			<p class="font-normal text-neutral-300/90 text-2xl pt-4">
+				I&apos;m currently
+				<span
+					class="font-bold text-2xl text-neutral-300/30 text-glow-2xl"
+					id="online_status"
+				>—————</span
+				>.
+			</p>
+		</div>
+		<div
+			class="col-span-2 transition-colors hover:bg-neutral-950 bg-neutral-900/15 md:bg-neutral-950/10 p-4 md:rounded-2xl md:outline-2 outline-neutral-100/5">
+			<p
+				class="font-mono select-none text-neutral-300/30 text-sm">
+				<img
+					alt="music icon"
+					class="inline opacity-40 invert w-4 h-4 pb-0.5"
+					src="/icons/music.svg" />
+				last_fm.png
+			</p>
+			<div class="pt-4 md:pt-6 flex flex-row">
 				<div
-					class="row-span-1 transition-colors hover:bg-neutral-950 bg-neutral-950/10 p-4 rounded-2xl outline-2 outline-neutral-100/5 max-h-[8em]">
-					<p
-						class="font-mono select-none text-neutral-300/30 text-sm">
-						<img
-							src="icons/list.svg"
-							class="inline opacity-40 invert w-4 h-4 pb-0.5" />
-						status.go
-					</p>
-					<p class="font-normal text-neutral-300/90 text-2xl pt-4">
-						I'm currently
-						<span
-							class="font-bold text-2xl text-neutral-300/30 text-glow-2xl"
-							id="online_status"
-							>—————</span
-						>.
-					</p>
-				</div>
-				<div
-					class="col-span-2 transition-colors hover:bg-neutral-950 bg-neutral-950/10 p-4 rounded-2xl outline-2 outline-neutral-100/5">
-					<p
-						class="font-mono select-none text-neutral-300/30 text-sm">
-						<img
-							src="icons/music.svg"
-							class="inline opacity-40 invert w-4 h-4 pb-0.5" />
-						last_fm.png
-					</p>
-					<div class="pt-6 flex flex-row">
-						<div
-							class="relative rounded-xl w-32 h-32 bg-neutral-900/5">
-							<img
-								src="icons/music.svg"
-								alt="album cover glow"
-								class="absolute inset-0 w-full h-full blur-xl"
-								id="lastfm_cover_blur" />
-							<img
-								src="icons/music.svg"
-								alt="album cover"
-								class="relative z-10 w-full h-full rounded-xl invert opacity-30"
-								id="lastfm_cover" />
-						</div>
-
-						<div class="pl-8 pt-6">
-							<p
-								class="font-semibold font-mono text-neutral-100/90 text-2xl hover:underline">
-								<a href="#" id="lastfm_title"> ———————————— </a>
-							</p>
-							<p
-								class="font-mono text-md text-neutral-100/70"
-								id="lastfm_subtitle">
-								——————
-							</p>
-						</div>
-					</div>
+					class="relative rounded-xl aspect-square h-16 w-16 md:w-32 md:h-32 bg-neutral-900/5">
+					<img
+						alt="album cover glow"
+						class="absolute inset-0 w-full h-full hidden md:block md:blur-xl"
+						id="lastfm_cover_blur"
+						src="/icons/music.svg" />
+					<img
+						alt="album cover"
+						class="relative z-10 w-full h-full rounded-xl invert opacity-30"
+						id="lastfm_cover"
+						src="/icons/music.svg" />
 				</div>
 
-				<div
-					class="row-span-2 transition-colors hover:bg-neutral-950 bg-neutral-950/10 p-4 rounded-2xl outline-2 outline-neutral-100/5">
+				<div class="pl-4 md:pl-8 md:pt-6">
 					<p
-						class="font-mono select-none text-neutral-300/30 text-sm">
-						<img
-							src="icons/adjustments.svg"
-							class="inline opacity-40 invert w-4 h-4 pb-0.5" />
-						user.toml
+						class="font-semibold font-mono text-neutral-100/90 text-2xl hover:underline">
+						<a href="#" id="lastfm_title"> ———————————— </a>
 					</p>
-					<div class="pt-2 text-white/50">
+					<p
+						class="font-mono text-md text-neutral-100/70"
+						id="lastfm_subtitle">
+						——————
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<div
+			class="hidden md:block row-span-2 transition-colors hover:bg-neutral-950 bg-neutral-950/10 p-4 rounded-2xl md:outline-2 outline-neutral-100/5">
+			<p
+				class="font-mono select-none text-neutral-300/30 text-sm">
+				<img
+					alt="adjustments"
+					class="inline opacity-40 invert w-4 h-4 pb-0.5"
+					src="/icons/adjustments.svg" />
+				user.toml
+			</p>
+			<div class="pt-2 text-white/50">
 						<pre>[user]
-<span class="text-pink-300 shadow-pink-300 text-glow-2xl">username</span> = <span class="text-emerald-300  shadow-emerald-300 text-glow-2xl">"kai"</span>
-<span class="text-pink-300 shadow-pink-300 text-glow-2xl">pronouns</span> = <span class="text-emerald-300 shadow-emerald-300 text-glow-2xl">[ "she/her" ]</span>
+<span class="text-pink-300 shadow-pink-300 text-glow-2xl">username</span> = <span
+								class="text-emerald-300  shadow-emerald-300 text-glow-2xl content">kai</span>
+<span class="text-pink-300 shadow-pink-300 text-glow-2xl">pronouns</span> = <span
+								class="text-emerald-300 shadow-emerald-300 text-glow-2xl">[ "she/her" ]</span>
 
 [contact]
-<span class="text-pink-300 shadow-pink-300 text-glow-2xl">email</span> = <a href="mailto:trap@kai.enterprises" class="text-emerald-300 shadow-emerald-300 text-glow-2xl hover:underline" id="email">"[object Encrypted]"</a>	
+<span class="text-pink-300 shadow-pink-300 text-glow-2xl">email</span> = <a
+								class="text-emerald-300 shadow-emerald-300 text-glow-2xl hover:underline"
+								href="mailto:trap@kai.enterprises"
+								id="email">[object Encrypted]</a>
 
 [socials]
-<span class="text-pink-300 shadow-pink-300 text-glow-2xl">github</span> = <a href="https://github.com/kai-gitt" class="text-emerald-300 shadow-emerald-300 text-glow-2xl hover:underline">"kai-gitt"</a>	
-<span class="text-pink-300 shadow-pink-300 text-glow-2xl">mastodon</span> = <a href="https://blahaj.social/@kai" class="text-emerald-300 shadow-emerald-300 text-glow-2xl hover:underline">"@kai@blahaj.social"</a>
+<span class="text-pink-300 shadow-pink-300 text-glow-2xl">github</span> = <a
+								class="text-emerald-300 shadow-emerald-300 text-glow-2xl hover:underline quoted"
+								href="https://github.com/kai-gitt" rel="me">kai-gitt</a>
+<span class="text-pink-300 shadow-pink-300 text-glow-2xl">mastodon</span> = <a
+								class="text-emerald-300 shadow-emerald-300 text-glow-2xl hover:underline quoted"
+								href="https://blahaj.social/@kai" rel="me">@kai@blahaj.social</a>
 
 [orgs.cloudnode]
-<span class="text-pink-300 shadow-pink-300 text-glow-2xl">github</span> = <a href="https://github.com/cloudnode-pro" class="text-emerald-300 shadow-emerald-300 text-glow-2xl hover:underline">"cloudnode-pro"</a>	
-<span class="text-pink-300 shadow-pink-300 text-glow-2xl">mastodon</span> = <a href="https://mastodon.social/@cloudnode" class="text-emerald-300 shadow-emerald-300 text-glow-2xl hover:underline">"@cloudnode"</a>
-<span class="text-pink-300 shadow-pink-300 text-glow-2xl">matrix</span> = <a href="https://matrix.to/#/!jqfTQiJXxKYvIDxcFG:matrix.org?via=matrix.org" class="text-emerald-300 shadow-emerald-300 text-glow-2xl hover:underline">"#cloudnode.pro"</a></pre>
-					</div>
-				</div>
+<span class="text-pink-300 shadow-pink-300 text-glow-2xl">github</span> = <a
+								class="text-emerald-300 shadow-emerald-300 text-glow-2xl hover:underline quoted"
+								href="https://github.com/cloudnode-pro">cloudnode-pro</a>
+<span class="text-pink-300 shadow-pink-300 text-glow-2xl">mastodon</span> = <a
+								class="text-emerald-300 shadow-emerald-300 text-glow-2xl hover:underline quoted"
+								href="https://mastodon.social/@cloudnode">@cloudnode</a>
+<span class="text-pink-300 shadow-pink-300 text-glow-2xl">matrix</span> = <a
+								class="text-emerald-300 shadow-emerald-300 text-glow-2xl hover:underline quoted"
+								href="https://matrix.to/#/!jqfTQiJXxKYvIDxcFG:matrix.org?via=matrix.org">#cloudnode.pro</a></pre>
+			</div>
+		</div>
+		<div
+			class="hidden md:block row-span-2 transition-colors hover:bg-neutral-950 bg-neutral-950/10 p-4 rounded-2xl md:outline-2 outline-neutral-100/5 min-h-[8em] mt-[-6em]">
+			<p
+				class="font-mono select-none text-neutral-300/30 text-sm">
+				<img
+					alt="adjustments"
+					class="inline opacity-40 invert w-4 h-4 pb-0.5"
+					src="/icons/adjustments.svg" />
+				projects.go
+			</p>
+		</div>
+		<div
+			class="col-span-2 transition-colors hover:bg-neutral-950 bg-neutral-950/10 p-4 md:rounded-2xl md:outline-2 outline-neutral-100/5 min-h-[19em]">
+			<p
+				class="font-mono select-none text-neutral-300/30 text-sm">
+				<img
+					alt="user"
+					class="inline opacity-40 invert w-4 h-4 pb-0.5"
+					src="/icons/user.svg" />
+				about_me.go
+			</p>
+			<div class="flex flex-row items-center pt-6">
 				<div
-					class="row-span-2 transition-colors hover:bg-neutral-950 bg-neutral-950/10 p-4 rounded-2xl outline-2 outline-neutral-100/5 min-h-[8em] mt-[-6em]">
-					<p
-						class="font-mono select-none text-neutral-300/30 text-sm">
-						<img
-							src="icons/adjustments.svg"
-							class="inline opacity-40 invert w-4 h-4 pb-0.5" />
-						projects.go
-					</p>
-				</div>
-				<div
-					class="col-span-2 transition-colors hover:bg-neutral-950 bg-neutral-950/10 p-4 rounded-2xl outline-2 outline-neutral-100/5 min-h-[19em]">
-					<p
-						class="font-mono select-none text-neutral-300/30 text-sm">
-						<img
-							src="icons/user.svg"
-							class="inline opacity-40 invert w-4 h-4 pb-0.5" />
-						about_me.go
-					</p>
-					<div class="flex flex-row items-center pt-6">
-						<div
-							class="w-20 h-20 text-gray-100 dark:text-gray-700 mb-4">
-							<div class="relative w-full h-full">
-								<div class="h-auto w-[8em]">
-									<div
-										class="border-6 rounded-full w-[8em]"
-										style="
+					class="w-20 h-20 text-gray-100 dark:text-gray-700 mb-4">
+					<div class="relative w-full h-full">
+						<div class="h-auto w-[8em]">
+							<div
+								class="border-6 rounded-full w-[8em]"
+								style="
 											border-color: transparent;
 											background: linear-gradient(
 														currentColor,
@@ -146,139 +190,143 @@
 													border-box;
 											background-size: contain;
 										">
-										<img
-											src="pfp.png"
-											alt="a white cat labeled milk in a cup'"
-											class="w-[8em] rounded-full" />
-									</div>
-								</div>
-								<div
-									class="w-[4em] absolute top-[25%] left-[25%] -translate-x-1/2 -translate-y-1/2 element-top">
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										viewBox="0 0 30 25">
-										<path
-											fill="#030303"
-											d="M28.14 18.62h-.01a3 3 0 0 0 1.28-3.3l-3.5-13.1A3 3 0 0 0 21.37.48l-.03.02a10.29 10.29 0 0 1-.76.44c-.54.3-1.3.68-2.15 1.02-1.87.76-3.59 1.1-4.7.81C10.67 1.98 7.4 3 5.3 3.84a26.93 26.93 0 0 0-3.89 1.98l-.02.01h-.01l.02.04-.03-.03A3 3 0 0 0 .1 9.14l3.51 13.09a3 3 0 0 0 4.52 1.75l.03-.02a11.19 11.19 0 0 1 .77-.45c.53-.29 1.29-.67 2.14-1.02 1.87-.76 3.6-1.1 4.7-.81 3.08.79 6.36-.22 8.44-1.07a26.93 26.93 0 0 0 3.9-1.97l.02-.02c0 .02 0 0 0 0Z"></path>
-										<path
-											fill="#67D4EA"
-											d="M13 5.59C8.8 4.52 3 8.27 3 8.27l3.5 13.1s5.82-3.76 10-2.69c4.19 1.07 10-2.68 10-2.68L23 2.9S17.18 6.67 13 5.6Z"></path>
-										<path
-											fill="#FCB6B3"
-											d="M13.72 8.3c-4.18-1.07-10 2.68-10 2.68l2.06 7.67s5.81-3.75 10-2.68c4.18 1.07 10-2.68 10-2.68l-2.06-7.67s-5.81 3.75-10 2.68Z"></path>
-										<path
-											fill="#FFF"
-											d="M14.4 10.86c-4.18-1.07-10 2.68-10 2.68l.69 2.55s5.82-3.75 10-2.68c4.19 1.08 10-2.68 10-2.68l-.68-2.55s-5.82 3.75-10 2.68Z"></path>
-									</svg>
-								</div>
+								<img
+									alt="a white cat labeled milk in a cup"
+									class="w-[8em] rounded-full"
+									src="/pfp.png" />
 							</div>
 						</div>
-						<div>
-							<!-- now look, copying the same div 3 times feels stupid (that's because it is) -->
-							<!-- but i had no better idea on how to put text over and below text without some css fuckery -->
-							<p
-								class="text-2xl text-white pl-16 opacity-40 font-semibold">
+						<div
+							class="w-[4em] absolute top-[25%] left-[25%] -translate-x-1/2 -translate-y-1/2 element-top">
+							<svg
+								viewBox="0 0 30 25"
+								xmlns="http://www.w3.org/2000/svg">
+								<path
+									d="M28.14 18.62h-.01a3 3 0 0 0 1.28-3.3l-3.5-13.1A3 3 0 0 0 21.37.48l-.03.02a10.29 10.29 0 0 1-.76.44c-.54.3-1.3.68-2.15 1.02-1.87.76-3.59 1.1-4.7.81C10.67 1.98 7.4 3 5.3 3.84a26.93 26.93 0 0 0-3.89 1.98l-.02.01h-.01l.02.04-.03-.03A3 3 0 0 0 .1 9.14l3.51 13.09a3 3 0 0 0 4.52 1.75l.03-.02a11.19 11.19 0 0 1 .77-.45c.53-.29 1.29-.67 2.14-1.02 1.87-.76 3.6-1.1 4.7-.81 3.08.79 6.36-.22 8.44-1.07a26.93 26.93 0 0 0 3.9-1.97l.02-.02c0 .02 0 0 0 0Z"
+									fill="#030303"></path>
+								<path
+									d="M13 5.59C8.8 4.52 3 8.27 3 8.27l3.5 13.1s5.82-3.76 10-2.69c4.19 1.07 10-2.68 10-2.68L23 2.9S17.18 6.67 13 5.6Z"
+									fill="#67D4EA"></path>
+								<path
+									d="M13.72 8.3c-4.18-1.07-10 2.68-10 2.68l2.06 7.67s5.81-3.75 10-2.68c4.18 1.07 10-2.68 10-2.68l-2.06-7.67s-5.81 3.75-10 2.68Z"
+									fill="#FCB6B3"></path>
+								<path
+									d="M14.4 10.86c-4.18-1.07-10 2.68-10 2.68l.69 2.55s5.82-3.75 10-2.68c4.19 1.08 10-2.68 10-2.68l-.68-2.55s-5.82 3.75-10 2.68Z"
+									fill="#FFF"></path>
+							</svg>
+						</div>
+					</div>
+				</div>
+				<div class="font-mono">
+					<!-- now look, copying the same div 3 times feels stupid (that's because it is) -->
+					<!-- but I had no better idea on how to put text over and below text without any CSS fuckery -->
+					<p
+						class="text-2xl text-white pl-16 pt-6 opacity-40 font hidden md:block">
 								<span class="text-transparent select-none"
-									>Hello there! iiiiiiiiiiiiii</span
+								>Hello there! iiiiiiii</span
 								>
-								<span
-									class="text-pink-400 text-xl font-mono font-bold text-glow-3xl shadow-pink-500"
-									>かい</span
-								>
-							</p>
-							<p class="text-3xl text-white pl-16 font-semibold">
-								Hello there! I&apos;m
-								<span
-									class="text-pink-500 font-mono font-bold text-glow-3xl shadow-pink-500"
-									>Kai</span
-								>
-							</p>
-							<p
-								class="text-2xl text-white pl-16 opacity-50 font-semibold">
+						<span
+							class="text-pink-400 text-xl font-mono font-bold text-glow-3xl shadow-pink-500"
+						>かい</span
+						>
+					</p>
+					<p class="text-xl md:text-3xl text-white pl-16 font">
+						Hello there!
+						I&apos;m
+						<span
+							class="text-pink-500 font-mono font-bold text-glow-3xl shadow-pink-500"
+						>Kai</span
+						>
+					</p>
+					<p
+						class="text-2xl text-white pl-16 opacity-50 font-semibold hidden md:block">
 								<span class="text-transparent w-128 select-none"
-									>Hello there! Iiiiiiiiiii
+								>Hello there! Iiiiiii
 								</span>
-								<span
-									class="text-pink-400 text-xl font-mono font-bold text-glow-3xl shadow-pink-500"
-									>/'kɑi̯/
+						<span
+							class="text-pink-400 text-xl font-mono font-bold text-glow-3xl shadow-pink-500"
+						>/'kɑi̯/
 								</span>
-							</p>
-						</div>
-					</div>
+					</p>
 				</div>
+			</div>
+		</div>
 
-				<div class="col-span-2 pt-20">
-					<div
-						class="gap-4 grid grid-cols-3 grid-rows-1 w-full h-full">
-						<div
-							class="bg-neutral-900/15 p-4 rounded-2xl outline-2 outline-neutral-100/5">
-							<p
-								class="font-mono select-none text-neutral-300/30 text-sm">
-								<img
-									src="icons/calendar.svg"
-									class="inline opacity-40 invert w-4 h-4 pb-0.5" />
-								date_time.go
-							</p>
-							<p
-								class="pt-6 text-3xl text-neutral-300/90 font-mono"
-								id="current_time">
-								——:——:——
-							</p>
-							<p class="text-neutral-300/70 font-mono">
-								CET (GMT+1)
-							</p>
-						</div>
-						<div
-							class="bg-neutral-900/15 p-4 rounded-2xl outline-2 outline-neutral-100/5">
-							<p
-								class="font-mono select-none text-neutral-300/30 text-sm">
-								<img
-									src="icons/clock.svg"
-									class="inline opacity-40 invert w-4 h-4 pb-0.5" />
-								spent_time.go
-							</p>
-							<p
-								class="pt-6 text-2xl text-neutral-300/90 font-mono"
-								id="wakatime">
-								— hr —— min
-							</p>
-							<p class="text-neutral-300/70 font-mono">
-								spent today
-							</p>
-						</div>
-						<div
-							class="bg-neutral-900/15 p-4 rounded-2xl outline-2 outline-neutral-100/5">
-							<p
-								class="font-mono select-none text-neutral-300/30 text-sm">
-								<img
-									src="icons/cloud.svg"
-									class="inline opacity-40 invert w-4 h-4 pb-0.5" />
-								weather.go
-							</p>
-							<p
-								class="pt-6 text-3xl text-neutral-300/90 font-mono"
-								id="weather_temp">
-								——°C
-							</p>
-							<p
-								class="text-neutral-300/70 font-mono"
-								id="weather_condition">
-								—————
-							</p>
-						</div>
-					</div>
-				</div>
-
+		<div class="col-span-2 md:pt-20">
+			<div
+				class="gap-4 md:grid grid-cols-3 grid-rows-1 w-full h-full">
 				<div
-					class="row-span-1 transition-colors hover:bg-neutral-950 bg-neutral-950/10 p-4 rounded-2xl outline-2 outline-neutral-100/5">
+					class="bg-neutral-900/15 p-4 md:rounded-2xl md:outline-2 outline-neutral-100/5">
 					<p
 						class="font-mono select-none text-neutral-300/30 text-sm">
 						<img
-							src="icons/code.svg"
-							class="inline opacity-40 invert w-4 h-4 pb-0.5" />
-						languages.yaml
+							alt="calendar"
+							class="inline opacity-40 invert w-4 h-4 pb-0.5"
+							src="/icons/calendar.svg" />
+						date_time.go
 					</p>
-					<div class="pt-2 text-white/50">
+					<p
+						class="md:pt-6 text-2xl text-neutral-300/90 font-mono"
+						id="current_time">
+						——:——:——
+					</p>
+					<p class="text-neutral-300/70 font-mono">
+						CET (GMT+1)
+					</p>
+				</div>
+				<div
+					class="bg-neutral-900/15 p-4 md:rounded-2xl md:outline-2 outline-neutral-100/5">
+					<p
+						class="font-mono select-none text-neutral-300/30 text-sm">
+						<img
+							alt="clock"
+							class="inline opacity-40 invert w-4 h-4 pb-0.5"
+							src="/icons/clock.svg" />
+						spent_time.go
+					</p>
+					<p
+						class="md:pt-6 text-2xl text-neutral-300/90 font-mono"
+						id="wakatime">
+						— hr —— min
+					</p>
+					<p class="text-neutral-300/70 font-mono">
+						spent today
+					</p>
+				</div>
+				<div
+					class="bg-neutral-900/15 p-4 md:rounded-2xl md:outline-2 outline-neutral-100/5">
+					<p
+						class="font-mono select-none text-neutral-300/30 text-sm">
+						<img
+							alt="cloud"
+							class="inline opacity-40 invert w-4 h-4 pb-0.5"
+							src="/icons/cloud.svg" />
+						weather.go
+					</p>
+					<p
+						class="md:pt-6 text-3xl text-neutral-300/90 font-mono"
+						id="weather_temp">
+						——°C
+					</p>
+					<p
+						class="text-neutral-300/70 text-sm font-mono"
+						id="weather_condition">
+						—————
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<div
+			class="row-span-1 transition-colors hover:bg-neutral-950 bg-neutral-950/10 p-4 md:rounded-2xl md:outline-2 outline-neutral-100/5">
+			<p
+				class="font-mono select-none text-neutral-300/30 text-sm">
+				<img
+					alt="code icon"
+					class="inline opacity-40 invert w-4 h-4 pb-0.5" src="/icons/code.svg" />
+				languages.yaml
+			</p>
+			<div class="pt-2 text-white/50">
 						<pre>
 programming:
   - <span class="text-emerald-300  shadow-emerald-300 text-glow-1xl">"golang"</span>
@@ -287,19 +335,20 @@ programming:
 real:
   - <span class="text-emerald-300  shadow-emerald-300 text-glow-1xl">"english"</span>
   - <span class="text-emerald-300  shadow-emerald-300 text-glow-1xl">"polish"</span></pre>
-					</div>
-				</div>
 			</div>
-		</main>
-		<!-- color cache, make sure tailwind keeps these colours in dist -->
-		<!-- i know it sounds stupid, but you gotta do what you gotta do -->
-		<span class="invisible select-none text-transparent" aria-hidden="true">
-			<p class="text-amber-500 shadow-amber-500"></p>
-			<p class="text-red-500 shadow-red-500"></p>
-			<p class="text-emerald-500 shadow-emerald-500"></p>
-			<p class="text-blue-400 shadow-blue-400"></p>
-		</span>
+		</div>
+	</div>
+	<!-- color cache, make sure tailwind keeps these colours in dist -->
+	<!-- I know it sounds stupid, but you have to do what you have to do -->
+	<span aria-hidden="true" class="invisible select-none text-transparent">
+		<p class="text-amber-500 shadow-amber-500"></p>
+		<p class="text-red-500 shadow-red-500"></p>
+		<p class="text-emerald-500 shadow-emerald-500"></p>
+		<p class="text-blue-400 shadow-blue-400"></p>
+	</span>
+</main>
 
-		<script type="module" src="/src/main.ts" defer></script>
-	</body>
+<script defer src="/src/main.ts" type="module"></script>
+<script defer src="/js/e.js" type="module"></script>
+</body>
 </html>

@@ -4,7 +4,7 @@ import { isCached } from "./wakatime";
 const CACHE_TIMEOUT = 4 * 60 * 1000; // 4 minutes in miliseconds
 const KEYS = {
 	LFM_LAST_UPDATED: "lastfm-last-updated",
-	LFM: "lastfm-data",
+	LFM: "lastfm-data"
 };
 
 export async function fetchLastfmData(

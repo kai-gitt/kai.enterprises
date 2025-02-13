@@ -3,7 +3,7 @@ import { CumulativeTotal, WakatimeResponse } from "./model";
 const CACHE_TIMEOUT = 30 * 60 * 1000; // 30 minutes in miliseconds
 const KEYS = {
 	WAKA_LAST_UPDATED: "wakatime-last-updated",
-	WAKA: "wakatime-data",
+	WAKA: "wakatime-data"
 };
 
 function formatDate(date: Date): string {
@@ -29,7 +29,7 @@ export async function fetchWakaTimeData(
 	const url = `https://wakatime.com/api/v1/users/${userId}/summaries?start=${today}&end=${today}&api_key=${apiKey}`;
 	const headers = {
 		Accept: "application/json",
-		Authorization: `Bearer ${apiKey}`,
+		Authorization: `Bearer ${apiKey}`
 	};
 
 	try {

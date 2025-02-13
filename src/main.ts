@@ -1,16 +1,7 @@
 import "./main.css";
-import {
-	CumulativeTotal,
-	DiscordResponse,
-	DiscordStatus,
-	WeatherData,
-} from "./model";
-//@ts-ignore
-import { Reveal } from "./e.js";
+import { CumulativeTotal, DiscordResponse, DiscordStatus, WeatherData } from "./model";
 
-const TZ_OFFSET = 1;
 const APPROX = [53.4, 14.5];
-const E = "fXZSfnV+RHyGjX+NjI+HkoWU";
 
 let clock: HTMLParagraphElement;
 let wakatime: HTMLParagraphElement;
@@ -25,7 +16,6 @@ let weather: {
 	condition: HTMLParagraphElement;
 };
 let online_status: HTMLParagraphElement;
-let em: HTMLAnchorElement;
 
 document.addEventListener("DOMContentLoaded", async (_) => {
 	// couldn't think of a better way :<
@@ -39,7 +29,7 @@ document.addEventListener("DOMContentLoaded", async (_) => {
 		title: document.getElementById("lastfm_title")! as HTMLAnchorElement,
 		subtitle: document.getElementById(
 			"lastfm_subtitle"
-		)! as HTMLParagraphElement,
+		)! as HTMLParagraphElement
 	};
 	online_status = document.getElementById(
 		"online_status"
@@ -48,69 +38,31 @@ document.addEventListener("DOMContentLoaded", async (_) => {
 		condition: document.getElementById(
 			"weather_condition"
 		)! as HTMLParagraphElement,
-		temp: document.getElementById("weather_temp")! as HTMLParagraphElement,
+		temp: document.getElementById("weather_temp")! as HTMLParagraphElement
 	};
-	em = document.getElementById("email")! as HTMLAnchorElement;
-	//@ts-ignore
-	let e = Reveal(atob(E), 16);
-	em.href = `mailto:${e}`;
-	em.innerText = `"${e}"`;
 
 	setInterval(UpdateClock, 100);
-	// disable fetching live data if in a dev environment.
-	// if (
-	// 	window.location.host == "kai.enterprises" ||
-	// 	window.location.host == "staging.kai.enterprises"
-	// ) {
+
 	await Promise.all([
 		UpdateWakatimeData(),
-		// UpdateLastFMData(), // now updated by Discord
 		UpdateWeather(),
-		UpdateOnlineStatus(),
+		UpdateOnlineStatus()
 	]);
-	// }
 
 	document.getElementById("loading_reminder")!.remove();
 });
 
 const UpdateClock = () => {
-	let time = new Date(Date.now());
-	clock.innerText = `${((time.getUTCHours() + TZ_OFFSET) % 24)
-		.toString(10)
-		.padStart(2, "0")}:${time
-		.getUTCMinutes()
-		.toString(10)
-		.padStart(2, "0")}:${time
-		.getUTCSeconds()
-		.toString(10)
-		.padStart(2, "0")}`;
+	clock.textContent = new Date().toLocaleTimeString(navigator.languages, {
+		timeZone: "Europe/Warsaw"
+	});
 };
 
 const UpdateWakatimeData = async (): Promise<void> => {
 	const req = await fetch("https://services.kai.enterprises/wakatime");
 	const data = (await req.json()) as CumulativeTotal;
-	wakatime.innerText = data.text;
+	wakatime.textContent = data.text;
 };
-
-// const UpdateLastFMData = async (): Promise<void> => {
-// 	const req = await fetch("https://services.kai.enterprises/lastfm");
-// 	const data = (await req.json()) as Track;
-
-// 	if (data.image[3]["#text"] != "") {
-// 		lastfm.cover.src = data.image[3]["#text"];
-// 		lastfm.cover_blur.src = data.image[3]["#text"];
-// 		lastfm.cover.alt = `cover art of ${data.name}`;
-// 		lastfm.cover.classList.remove("invert");
-// 		lastfm.cover.classList.remove("opacity-*");
-// 		lastfm.cover.classList.remove("opacity-30");
-// 		lastfm.cover.classList.remove("p-*");
-// 		lastfm.cover.classList.remove("p-8");
-// 	}
-
-// 	lastfm.title.innerText = data.name;
-// 	lastfm.title.href = data.url;
-// 	lastfm.subtitle.innerText = `${data.album["#text"]} • ${data.artist["#text"]}`;
-// };
 
 const UpdateOnlineStatus = async (): Promise<void> => {
 	const req = await fetch("https://services.kai.enterprises/discord");
@@ -119,20 +71,20 @@ const UpdateOnlineStatus = async (): Promise<void> => {
 	const types = {
 		[DiscordStatus.online]: {
 			status: "online",
-			color: "emerald-500",
+			color: "emerald-500"
 		},
 		[DiscordStatus.dnd]: {
 			status: "busy",
-			color: "red-500",
+			color: "red-500"
 		},
 		[DiscordStatus.offline]: {
 			status: "offline",
-			color: "blue-400",
+			color: "blue-400"
 		},
 		[DiscordStatus.idle]: {
 			status: "away",
-			color: "amber-500",
-		},
+			color: "amber-500"
+		}
 	};
 
 	if (json != undefined) {
@@ -143,7 +95,7 @@ const UpdateOnlineStatus = async (): Promise<void> => {
 			`text-${status.color}`,
 			`shadow-${status.color}`
 		);
-		online_status.innerText = status.status;
+		online_status.textContent = status.status;
 
 		lastfm.cover.src = data.spotify.album_art_url;
 		lastfm.cover_blur.src = data.spotify.album_art_url;
@@ -154,8 +106,8 @@ const UpdateOnlineStatus = async (): Promise<void> => {
 		lastfm.cover.classList.remove("p-*");
 		lastfm.cover.classList.remove("p-8");
 
-		lastfm.title.innerText = data.spotify.song;
-		lastfm.subtitle.innerText = `${data.spotify.album} • ${data.spotify.artist}`;
+		lastfm.title.textContent = data.spotify.song;
+		lastfm.subtitle.textContent = `${data.spotify.album} • ${data.spotify.artist}`;
 	}
 };
 
@@ -166,8 +118,8 @@ const UpdateWeather = async (): Promise<void> => {
 	const data = (await req.json()) as WeatherData;
 
 	if (data != undefined) {
-		weather.temp.innerText = `${data.current_weather.temperature}${data.current_weather_units.temperature}`;
-		weather.condition.innerText = `${wmoToDescription(
+		weather.temp.textContent = `${data.current_weather.temperature}${data.current_weather_units.temperature}`;
+		weather.condition.textContent = `${wmoToDescription(
 			data.current_weather.weathercode
 		)}`;
 	}
@@ -184,7 +136,7 @@ function wmoToDescription(wmoCode: number): string {
 		6: "Dust in suspension",
 		7: "Dust or sand raised by wind",
 		8: "Dust or sand whirls",
-		9: "Duststorm or sandstorm",
+		9: "Dust storm or sandstorm",
 		10: "Mist",
 		11: "Shallow fog",
 		12: "Continuous fog",
@@ -274,7 +226,7 @@ function wmoToDescription(wmoCode: number): string {
 		96: "Heavy snow grains",
 		97: "Slight or moderate snow pellets",
 		98: "Heavy snow pellets",
-		99: "Slight or moderate snow crystals",
+		99: "Slight or moderate snow crystals"
 	};
 
 	return (

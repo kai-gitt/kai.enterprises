@@ -1,6 +1,6 @@
 {
-  "bracketSameLine": true,
-  "useTabs": true,
-  "tabWidth": 4,
-  "semi": true
+	"bracketSameLine": true,
+	"useTabs": true,
+	"tabWidth": 4,
+	"semi": true
 }

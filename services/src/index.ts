@@ -1,5 +1,4 @@
 import { fetchDiscordApi } from "./discord";
-import { fetchLastfmData } from "./lastfm";
 import { fetchWakaTimeData } from "./wakatime";
 
 export interface Env {
@@ -45,9 +44,9 @@ export default {
 		}
 
 		const response = new Response(":3", {
-			status: 303, // see other
+			status: 303 // see other
 		});
 		response.headers.set("Location", "https://kai.enterprises/");
 		return response;
-	},
+	}
 } satisfies ExportedHandler<Env>;
