@@ -57,7 +57,7 @@ const updateOnlineStatus = async (): Promise<void> => {
 		const statusConfig = APP_CONFIG.STATUS_CONFIG[discord_status];
 
 		updateStatusDisplay(statusConfig);
-		if (spotify != null) {
+		if (data.data.listening_to_spotify && spotify != null) {
 			updateSpotifyDisplay(spotify);
 		}
 	} catch (error) {
@@ -86,7 +86,8 @@ const updateSpotifyDisplay = (spotify: SpotifyData) => {
 	coverBlur.src = spotify.album_art_url;
 	cover.alt = `Cover art of ${spotify.song}`;
 
-	removeMultipleClasses(cover, ["opacity-", "p-", "invert"]);
+	removeMultipleClasses(cover, ["opacity-", "p", "invert"]);
+	removeMultipleClasses(coverBlur, ["opacity-", "p", "invert"]);
 
 	title.textContent = spotify.song;
 	subtitle.textContent = `${spotify.album} • ${spotify.artist}`;
