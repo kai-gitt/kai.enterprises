@@ -1,5 +1,10 @@
 import "./main.css";
-import { CumulativeTotal, DiscordResponse, DiscordStatus, WeatherData } from "./model";
+import {
+	CumulativeTotal,
+	DiscordResponse,
+	DiscordStatus,
+	WeatherData,
+} from "./model";
 
 const APPROX = [53.4, 14.5];
 
@@ -16,6 +21,7 @@ let weather: {
 	condition: HTMLParagraphElement;
 };
 let online_status: HTMLParagraphElement;
+let status_indicator: HTMLDivElement;
 
 document.addEventListener("DOMContentLoaded", async (_) => {
 	// couldn't think of a better way :<
@@ -29,16 +35,19 @@ document.addEventListener("DOMContentLoaded", async (_) => {
 		title: document.getElementById("lastfm_title")! as HTMLAnchorElement,
 		subtitle: document.getElementById(
 			"lastfm_subtitle"
-		)! as HTMLParagraphElement
+		)! as HTMLParagraphElement,
 	};
 	online_status = document.getElementById(
 		"online_status"
 	)! as HTMLParagraphElement;
+	status_indicator = document.getElementById(
+		"status_indicator"
+	)! as HTMLDivElement;
 	weather = {
 		condition: document.getElementById(
 			"weather_condition"
 		)! as HTMLParagraphElement,
-		temp: document.getElementById("weather_temp")! as HTMLParagraphElement
+		temp: document.getElementById("weather_temp")! as HTMLParagraphElement,
 	};
 
 	setInterval(UpdateClock, 100);
@@ -46,7 +55,7 @@ document.addEventListener("DOMContentLoaded", async (_) => {
 	await Promise.all([
 		UpdateWakatimeData(),
 		UpdateWeather(),
-		UpdateOnlineStatus()
+		UpdateOnlineStatus(),
 	]);
 
 	document.getElementById("loading_reminder")!.remove();
@@ -54,7 +63,7 @@ document.addEventListener("DOMContentLoaded", async (_) => {
 
 const UpdateClock = () => {
 	clock.textContent = new Date().toLocaleTimeString(navigator.languages, {
-		timeZone: "Europe/Warsaw"
+		timeZone: "Europe/Warsaw",
 	});
 };
 
@@ -71,20 +80,20 @@ const UpdateOnlineStatus = async (): Promise<void> => {
 	const types = {
 		[DiscordStatus.online]: {
 			status: "online",
-			color: "emerald-500"
+			color: "emerald-500",
 		},
 		[DiscordStatus.dnd]: {
 			status: "busy",
-			color: "red-500"
+			color: "red-500",
 		},
 		[DiscordStatus.offline]: {
 			status: "offline",
-			color: "blue-400"
+			color: "blue-400",
 		},
 		[DiscordStatus.idle]: {
 			status: "away",
-			color: "amber-500"
-		}
+			color: "amber-500",
+		},
 	};
 
 	if (json != undefined) {
@@ -96,6 +105,8 @@ const UpdateOnlineStatus = async (): Promise<void> => {
 			`shadow-${status.color}`
 		);
 		online_status.textContent = status.status;
+		status_indicator.classList.remove("bg-red-500");
+		status_indicator.classList.add(`bg-${status.color}`);
 
 		lastfm.cover.src = data.spotify.album_art_url;
 		lastfm.cover_blur.src = data.spotify.album_art_url;
@@ -226,7 +237,7 @@ function wmoToDescription(wmoCode: number): string {
 		96: "Heavy snow grains",
 		97: "Slight or moderate snow pellets",
 		98: "Heavy snow pellets",
-		99: "Slight or moderate snow crystals"
+		99: "Slight or moderate snow crystals",
 	};
 
 	return (

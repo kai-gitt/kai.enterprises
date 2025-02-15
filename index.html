@@ -171,13 +171,13 @@
 							src="/icons/user.svg" />
 						about_me.go
 					</p>
-					<div class="flex flex-row items-center pt-6">
+					<div class="flex flex-row items-center pt-2 pl-4">
 						<div
 							class="w-20 h-20 text-gray-100 dark:text-gray-700 mb-4">
 							<div class="relative w-full h-full">
-								<div class="h-auto w-[8em]">
+								<div class="h-auto w-[6em]">
 									<div
-										class="border-6 rounded-full w-[8em]"
+										class="border-6 rounded-full w-[6em]"
 										style="
 											border-color: transparent;
 											background: linear-gradient(
@@ -203,7 +203,7 @@
 									</div>
 								</div>
 								<div
-									class="w-[4em] absolute top-[25%] left-[25%] -translate-x-1/2 -translate-y-1/2 element-top">
+									class="w-[2.5em] absolute top-[15%] left-[15%] -translate-x-1/2 -translate-y-1/2 element-top">
 									<svg
 										viewBox="0 0 30 25"
 										xmlns="http://www.w3.org/2000/svg">
@@ -221,6 +221,9 @@
 											fill="#FFF"></path>
 									</svg>
 								</div>
+								<div
+									class="w-[1em] absolute top-[100%] left-[100%] -translate-x-1/2 -translate-y-1/2 element-top bg-red-500 h-[1em] rounded-full outline-4 outline-[#030303]"
+									id="status_indicator"></div>
 							</div>
 						</div>
 						<div class="font-mono">
@@ -350,10 +353,11 @@ real:
 			<span
 				aria-hidden="true"
 				class="invisible select-none text-transparent">
-				<p class="text-amber-500 shadow-amber-500"></p>
-				<p class="text-red-500 shadow-red-500"></p>
-				<p class="text-emerald-500 shadow-emerald-500"></p>
-				<p class="text-blue-400 shadow-blue-400"></p>
+				<p class="text-amber-500 shadow-amber-500 bg-amber-500"></p>
+				<p class="text-red-500 shadow-red-500 bg-red-500"></p>
+				<p
+					class="text-emerald-500 shadow-emerald-500 bg-emerald-500"></p>
+				<p class="text-blue-400 shadow-blue-400 bg-blue-400"></p>
 			</span>
 		</main>
 
