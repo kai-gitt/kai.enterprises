@@ -1,4 +1,9 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+@theme {
+	--font-mono: "Space Mono", "monospace";
+}
 
 @utility quoted {
 	&::after,
@@ -11,14 +16,29 @@
 	background: linear-gradient(
 		to right,
 		#55cdfc 20%,
-			/* Light Blue */ #f7a3b6 20%,
+		/* Light Blue */ #f7a3b6 20%,
 		#f7a3b6 40%,
-			/* Pink */ #ffffff 40%,
+		/* Pink */ #ffffff 40%,
 		#ffffff 60%,
-			/* White */ #f7a3b6 60%,
+		/* White */ #f7a3b6 60%,
 		#f7a3b6 80%,
-			/* Pink */ #55cdfc 80% /* Light Blue */
+		/* Pink */ #55cdfc 80% /* Light Blue */
 	);
+}
+
+@utility ring-trans {
+	border-color: transparent;
+	background: linear-gradient(currentColor, currentColor) padding-box,
+		conic-gradient(
+				from -45deg at 50% 50%,
+				#67d4ea 10%,
+				#fcb6b3 30%,
+				#fff 50%,
+				#fcb6b3 70%,
+				#67d4ea 90%
+			)
+			border-box;
+	background-size: contain;
 }
 
 @utility animate-ping-slow {
@@ -44,5 +64,5 @@
 @utility shadow-4xl {
 	--tw-shadow: 0 0px 4000px 0px;
 	box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
-	var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+		var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
 }

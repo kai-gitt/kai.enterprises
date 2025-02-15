@@ -48,10 +48,10 @@ interface Data {
 	active_on_discord_desktop: boolean;
 	active_on_discord_mobile: boolean;
 	listening_to_spotify: boolean;
-	spotify: Spotify;
+	spotify?: SpotifyData;
 }
 
-interface Spotify {
+export interface SpotifyData {
 	timestamps: {
 		start: number;
 		end: number;
@@ -64,8 +64,19 @@ interface Spotify {
 }
 
 export enum DiscordStatus {
-	online = "online",
-	idle = "idle",
-	dnd = "dnd",
-	offline = "offline",
+	Online = "online",
+	Idle = "idle",
+	Dnd = "dnd",
+	Offline = "offline",
+}
+
+export type Coordinates = { latitude: number; longitude: number };
+export type StatusConfig = Record<DiscordStatus, StatusInfo>;
+export type WeatherDescription = Record<number, string>;
+
+export interface StatusInfo {
+	statusText: string;
+	textColor: string;
+	shadowColor: string;
+	bgColor: string;
 }
