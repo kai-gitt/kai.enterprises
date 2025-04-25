@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 			updateWakatimeData(),
 			updateWeather(),
 			updateOnlineStatus(),
+			deobfuscateEmail(),
 		]);
 
 		DomElements.getElement(APP_CONFIG.SELECTORS.LOADING).remove();
@@ -119,3 +120,15 @@ const updateWeather = async (): Promise<void> => {
 		DomElements.weather.condition.textContent = "Weather data unavailable";
 	}
 };
+
+const deobfuscateEmail = async (): Promise<void> => {
+	const e = (function(){
+		return 'zV2cpJHcyVGduVmLpF2aAVWb'.split('').reverse().join('');
+	})();
+	// @ts-ignore exists in DOM
+	document.getElementById('email').innerText = `"${atob(e)}"`;
+	// @ts-ignore exists in DOM
+	document.getElementById('email').href = `mailto:${atob(e)}`;
+	// @ts-ignore exists in DOM
+	document.getElementById('trap')?.remove();
+}
